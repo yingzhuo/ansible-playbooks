@@ -12,3 +12,7 @@
 # 测试用
 test/
 test.yaml
+
+# omz备份
+omz/
+./oh-my-zsh.tar.gz
