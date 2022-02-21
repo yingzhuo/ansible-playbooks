@@ -1,0 +1,15 @@
+- name: rsync project
+  synchronize:
+    mode: push
+    src: ../../ansible-roles
+    dest: /tmp
+    archive: no
+    links: no
+    recursive: yes
+    rsync_opts:
+      - "--delete"
+      - "--delete-excluded"
+      - "--exclude=.DS_Store"
+      - "--exclude=.idea*"
+      - "--exclude=.git*"
+      - "--exclude=test*"

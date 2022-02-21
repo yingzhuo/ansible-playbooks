@@ -1,0 +1,43 @@
+- name: install zsh and more
+  yum:
+    name:
+      - zsh
+      - autojump-zsh
+    state: present
+
+- name: create omz dir
+  file:
+    path: "{{ omz_dir }}"
+    state: directory
+    mode: '0755'
+
+- name: unpack oh-my-zsh.tar.gz
+  unarchive:
+    src: oh-my-zsh.tar.gz
+    dest: "{{ omz_dir }}"
+    remote_src: no
+  changed_when:
+    - no
+
+- name: change default shell
+  user:
+    name: root
+    shell: /bin/zsh
+
+- name: reset user and group for omz dir
+  file:
+    path: "{{ omz_dir }}"
+    state: directory
+    recurse: yes
+    owner: root
+    group: root
+    mode: '0755'
+  changed_when:
+    - no
+
+- name: copy .zshrc file
+  template:
+    src: zshrc.j2
+    dest: ~/.zshrc
+    backup: no
+    remote_src: no

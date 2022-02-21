@@ -1,0 +1,55 @@
+- name: install common software
+  yum:
+    name:
+      # 通用
+      - tree
+      - psmisc
+      - yum-utils
+      - httpd-tools
+      - dos2unix
+      - jq
+
+      # zip相关工具
+      - zip
+      - unzip
+
+      # 网络相关工具
+      - wget
+      - curl
+      - git
+      - net-tools
+      - telnet
+      - nmap
+
+      # C与C++源码编译相关
+      - make
+      - gcc
+      - gcc-c++
+      - pcre-devel
+      - openssl-devel
+      - zlib-devel
+
+      # 其他
+      - figlet
+      - cowsay
+    state: present
+
+- name: enable rc-local service
+  file:
+    path: '/etc/rc.d/rc.local'
+    state: file
+    mode: 'u+x,g+x,o+x'
+
+- name: reset sudoers
+  template:
+    src: sudoers.j2
+    dest: /etc/sudoers
+    owner: root
+    group: root
+    mode: '0440'
+    backup: yes
+    validate: /usr/sbin/visudo -csf %s
+
+- name: disable selinux
+  selinux:
+    state: disabled

@@ -1,0 +1,28 @@
+- name: install vim
+  yum:
+    name:
+      - vim
+    state: present
+
+- name: create vim create dir
+  file:
+    path: "{{ vim_dir }}"
+    state: directory
+    mode: '0755'
+  changed_when: no
+
+- name: unpack vim.tar.gz
+  unarchive:
+    src: vim.tar.gz
+    dest: "{{ vim_dir }}"
+    remote_src: no
+  changed_when: no
+
+- name: reset user and group for vim config files
+  file:
+    path: "{{ vim_dir }}"
+    state: directory
+    recurse: yes
+    owner: root
+    group: root
+  changed_when: no

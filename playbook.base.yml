@@ -1,0 +1,10 @@
+- hosts: vm
+  gather_facts: no
+  roles:
+    - yum-repo
+    - common
+    - vim
+    - oh-my-zsh
+    - cleanup-script
+    - ntp
+    - firewall
