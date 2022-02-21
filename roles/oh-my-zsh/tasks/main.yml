@@ -40,4 +40,3 @@
     src: zshrc.j2
     dest: ~/.zshrc
     backup: no
-    remote_src: no

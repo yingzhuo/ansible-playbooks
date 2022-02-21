@@ -1,7 +1,6 @@
 - name: install vim
   yum:
-    name:
-      - vim
+    name: vim
     state: present
 
 - name: create vim create dir
