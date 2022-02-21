@@ -1,3 +1,0 @@
-skel_dir: "/etc/skel"
-vim_dir: "/etc/skel/.vim"
-omz_dir: "/etc/skel/.oh-my-zsh"
