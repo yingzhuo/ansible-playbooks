@@ -1,0 +1,7 @@
+- name: set yum repo
+  template:
+    src: k8s.repo.j2
+    dest: /etc/yum.repos.d/k8s.repo
+    owner: root
+    group: root
+    mode: '0644'

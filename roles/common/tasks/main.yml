@@ -35,6 +35,10 @@
       - cowsay
     state: present
 
+- name: set timezone to Asia/Shanghai
+  timezone:
+    name: Asia/Shanghai
+
 - name: enable rc-local service
   file:
     path: '/etc/rc.d/rc.local'
