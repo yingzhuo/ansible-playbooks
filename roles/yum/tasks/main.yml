@@ -1,3 +1,12 @@
+- name: config yum
+  template:
+    src: yum.conf.j2
+    dest: /etc/yum.conf
+    owner: root
+    group: root
+    mode: '0644'
+    backup: no
+
 - name: set base yum source
   yum_repository:
     name: bash
