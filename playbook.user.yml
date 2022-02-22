@@ -1,4 +1,0 @@
-- hosts: vm
-  gather_facts: no
-  roles:
-    - user-skeleton

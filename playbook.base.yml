@@ -8,3 +8,6 @@
     - cleanup-script
     - ntp
     - firewall
+    - selinux
+    - user-skeleton
+    - user

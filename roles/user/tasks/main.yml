@@ -1,0 +1,17 @@
+- name: create group for login
+  group:
+    name: yingzhuo
+    state: present
+
+- name: create user for login
+  user:
+    name: yingzhuo
+    state: present
+    group: yingzhuo
+    groups:
+      - wheel
+      - docker
+    create_home: yes
+    home: /home/yingzhuo
+    shell: /usr/bin/zsh
+    system: no

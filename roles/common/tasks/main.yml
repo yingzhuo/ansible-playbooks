@@ -55,10 +55,6 @@
     backup: yes
     validate: /usr/sbin/visudo -csf %s
 
-- name: disable selinux
-  selinux:
-    state: disabled
-
 - name: set /etc/motd
   template:
     src: motd.j2

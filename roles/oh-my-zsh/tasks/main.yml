@@ -16,8 +16,7 @@
     src: oh-my-zsh.tar.gz
     dest: "{{ omz_dir }}"
     remote_src: no
-  changed_when:
-    - no
+  changed_when: no
 
 - name: change default shell
   user:
@@ -32,8 +31,7 @@
     owner: root
     group: root
     mode: '0755'
-  changed_when:
-    - no
+  changed_when: no
 
 - name: copy .zshrc file
   template:
