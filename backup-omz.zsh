@@ -3,6 +3,8 @@
 rm -rf ./omz
 cp -R "$HOME/.oh-my-zsh" ./omz
 
+rm -rf ./omz/custom/env.zsh
+
 # shellcheck disable=SC2038
 find ./omz \
   -type l -or \

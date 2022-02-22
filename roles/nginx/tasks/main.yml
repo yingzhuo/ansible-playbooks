@@ -1,7 +1,6 @@
 - name: install nginx
   yum:
-    name:
-      - nginx
+    name: nginx
     state: present
 
 - name: configure nginx
@@ -35,6 +34,28 @@
     src: "yingzhuo.com.password"
     dest: "/etc/nginx/htpasswd/yingzhuo.com.password"
     mode: '0644'
+
+- name: copy html files
+  file:
+    path: /data/nginx/yingzhuo.com
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+  notify:
+    - restart nginx
+
+- name: copy vhost config
+  template:
+    src: "{{ item }}.j2"
+    dest: "/etc/nginx/conf.d/{{ item }}"
+    owner: root
+    group: root
+    mode: '0644'
+  loop:
+    - www.yingzhuo.com.conf
+  notify:
+    - restart nginx
 
 - name: startup nginx
   service:
