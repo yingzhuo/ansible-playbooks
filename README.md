@@ -27,6 +27,7 @@
         * [group](https://docs.ansible.com/ansible/2.9/modules/group_module.html#group-module)
     * [Jinjia2 - v2.9](https://docs.ansible.com/ansible/2.9/user_guide/playbooks_templating.html)
     * [Roles - v2.9](https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_roles.html)
+    * [SpecialVariables - v2.9](https://docs.ansible.com/ansible/latest/reference_appendices/special_variables.html)
 
 ##### 其他参考
 

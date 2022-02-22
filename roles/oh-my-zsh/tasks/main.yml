@@ -7,15 +7,21 @@
 
 - name: create omz dir
   file:
-    path: "{{ omz_dir }}"
+    path: "{{ item }}"
     state: directory
     mode: '0755'
+  loop:
+    - ~/.oh-my-zsh
+    - /etc/skel/.oh-my-zsh
 
 - name: unpack oh-my-zsh.tar.gz
   unarchive:
     src: oh-my-zsh.tar.gz
-    dest: "{{ omz_dir }}"
+    dest: "{{ item }}"
     remote_src: no
+  loop:
+    - ~/.oh-my-zsh
+    - /etc/skel/.oh-my-zsh
   changed_when: no
 
 - name: change default shell
@@ -25,16 +31,22 @@
 
 - name: reset user and group for omz dir
   file:
-    path: "{{ omz_dir }}"
+    path: "{{ item }}"
     state: directory
     recurse: yes
     owner: root
     group: root
     mode: '0755'
+  loop:
+    - ~/.oh-my-zsh
+    - /etc/skel/.oh-my-zsh
   changed_when: no
 
 - name: copy .zshrc file
   template:
     src: zshrc.j2
-    dest: ~/.zshrc
+    dest: "{{ item }}"
     backup: no
+  loop:
+    - ~/.zshrc
+    - /etc/skel/.zshrc

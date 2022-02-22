@@ -14,4 +14,5 @@
     create_home: yes
     home: /home/yingzhuo
     shell: /usr/bin/zsh
+    password: "$6$pUpIT.Ft$f4VhSQrk582YcQBm1MYfW/ytueqM9Xm1XAHixibgrzBpZBUZrILivgPNsWGi.ebdHax9PEWd3JL/Zyh95sYOH."
     system: no

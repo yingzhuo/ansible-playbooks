@@ -1,4 +1,4 @@
-- name: restartup docker engine
+- name: restart docker engine
   service:
     name: docker
     state: restarted

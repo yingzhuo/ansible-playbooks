@@ -1,7 +1,7 @@
 - name: rsync project
   synchronize:
     mode: push
-    src: ../../ansible-roles
+    src: "{{ inventory_dir }}"
     dest: /tmp
     archive: no
     links: no

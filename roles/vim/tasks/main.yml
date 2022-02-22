@@ -5,23 +5,31 @@
 
 - name: create vim create dir
   file:
-    path: "{{ vim_dir }}"
+    path: "{{ item }}"
     state: directory
     mode: '0755'
-  changed_when: no
+  loop:
+    - ~/.vim
+    - /etc/skel/.vim
 
 - name: unpack vim.tar.gz
   unarchive:
     src: vim.tar.gz
-    dest: "{{ vim_dir }}"
+    dest: "{{ item }}"
     remote_src: no
+  loop:
+    - ~/.vim
+    - /etc/skel/.vim
   changed_when: no
 
 - name: reset user and group for vim config files
   file:
-    path: "{{ vim_dir }}"
+    path: "{{ item }}"
     state: directory
     recurse: yes
     owner: root
     group: root
+  loop:
+    - ~/.vim
+    - /etc/skel/.vim
   changed_when: no

@@ -9,5 +9,5 @@
     - ntp
     - firewall
     - selinux
-    - user-skeleton
     - user
+    - ssh
