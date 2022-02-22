@@ -7,11 +7,6 @@ server {
     }
 }
 
-upstream playground-backend {
-    #ip_hash;
-    server      localhost:18855         weight=5;
-}
-
 server {
     listen       443 ssl;
     server_name  www.yingzhuo.com;
@@ -60,7 +55,7 @@ server {
         index   index.html;
     }
 
-    # 转发后端API
+    # 负载均衡后端
     location ~* "/api/playground/(.*)$" {
         proxy_pass                                      http://playground-backend/$1;
         proxy_redirect                                  off;
@@ -80,4 +75,9 @@ server {
         proxy_busy_buffers_size                         128k;
         proxy_temp_file_write_size                      128k;
     }
+}
+
+upstream playground-backend {
+    #ip_hash;
+    server      localhost:18855         weight=5;
 }

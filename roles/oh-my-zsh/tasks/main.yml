@@ -50,3 +50,12 @@
   loop:
     - ~/.zshrc
     - /etc/skel/.zshrc
+
+- name: touch .zlogout
+  file:
+    path: "{{ item }}"
+    state: touch
+  loop:
+    - ~/.zlogout
+    - /etc/skel/.zlogout
+  changed_when: no
