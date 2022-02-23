@@ -15,9 +15,6 @@ server {
     ssl_certificate       /etc/nginx/ssl/yingzhuo.com.crt;
     ssl_certificate_key   /etc/nginx/ssl/yingzhuo.com.key;
 
-    # 错误页面
-    error_page 404 =302 /404.html;
-
     # 日志
     error_log             /var/log/nginx/www_error.log   error;
     access_log            /var/log/nginx/www_access.log  combined;

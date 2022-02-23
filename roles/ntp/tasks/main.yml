@@ -1,7 +1,6 @@
 - name: install ntpdate
   yum:
-    name:
-      - ntpdate
+    name: ntpdate
     state: present
 
 - name: edit crontab

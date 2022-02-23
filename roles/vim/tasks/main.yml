@@ -20,6 +20,7 @@
   loop:
     - /root
     - /etc/skel
+  changed_when: no
 
 - name: reset user and group for vim config files
   file:
