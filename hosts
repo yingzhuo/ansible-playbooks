@@ -1,12 +1,10 @@
-# ----------------------------------------------------------------------------------------------------------------------
-# 本地虚拟机
-# ----------------------------------------------------------------------------------------------------------------------
-[vm]
-vm01 ansible_ssh_host=10.211.55.4
+vm01 ansible_ssh_host=10.211.55.4 ansible_ssh_user=root ansible_ssh_port=22 ansible_become=no ansible_become_user=root ansible_become_method=sudo
 
-[vm:vars]
-ansible_ssh_user=root
-ansible_ssh_port=22
-ansible_become=no
-ansible_become_user=root
-ansible_become_method=sudo
+[webserver]
+vm01
+
+[elastic]
+vm01
+
+[kube]
+vm01

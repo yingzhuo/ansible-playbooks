@@ -1,4 +1,4 @@
-- hosts: vm
+- hosts: kube
   gather_facts: no
   roles:
     - docker

@@ -36,7 +36,6 @@
     recurse: yes
     owner: root
     group: root
-    mode: '0755'
   loop:
     - /root/.oh-my-zsh
     - /etc/skel/.oh-my-zsh

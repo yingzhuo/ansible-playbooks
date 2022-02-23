@@ -31,4 +31,4 @@
 
 ##### 其他参考
 
-* [ansible_facts](.ref/all-facts.json)
+* [ansible_facts](_ref/all-facts.json)
