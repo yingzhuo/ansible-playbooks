@@ -1,18 +1,18 @@
 #!/usr/bin/env zsh
 
-rm -rf ./omz
-cp -R "$HOME/.oh-my-zsh" ./omz
+rm -rf ./.oh-my-zsh
+cp -R "$HOME/.oh-my-zsh" ./.oh-my-zsh
 
-rm -rf ./omz/custom/env.zsh
+rm -rf ./.oh-my-zsh/custom/env.zsh
+rm -rf ./.oh-my-zsh/cache/*
+rm -rf ./.oh-my-zsh/cache/.zsh-update
 
 # shellcheck disable=SC2038
-find ./omz \
+find ./.oh-my-zsh \
   -type l -or \
   -iname '.git*' -or \
   -iname 'LICENSE*' -or \
-  -iname 'README*' -or \
   -iname 'example*' -or \
   -iname 'SECURITY*' -or \
-  -iname 'lantern*' -or \
-  -iname '*.md' |
+  -iname 'lantern*' |
   xargs rm -rf

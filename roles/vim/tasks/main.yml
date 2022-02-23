@@ -3,24 +3,23 @@
     name: vim
     state: present
 
-- name: create vim create dir
-  file:
-    path: "{{ item }}"
-    state: directory
-    mode: '0755'
-  loop:
-    - ~/.vim
-    - /etc/skel/.vim
-
-- name: unpack vim.tar.gz
-  unarchive:
-    src: vim.tar.gz
+- name: rsync .vim
+  synchronize:
+    mode: push
+    src: "{{ inventory_dir }}/_files/.vim"
     dest: "{{ item }}"
-    remote_src: no
+    archive: no
+    links: no
+    recursive: yes
+    rsync_opts:
+      - "--delete"
+      - "--delete-excluded"
+      - "--exclude=.DS_Store"
+      - "--exclude=.idea*"
+      - "--exclude=.git*"
   loop:
-    - ~/.vim
-    - /etc/skel/.vim
-  changed_when: no
+    - /root
+    - /etc/skel
 
 - name: reset user and group for vim config files
   file:
@@ -30,6 +29,6 @@
     owner: root
     group: root
   loop:
-    - ~/.vim
+    - /root/.vim
     - /etc/skel/.vim
   changed_when: no

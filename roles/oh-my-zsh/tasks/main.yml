@@ -5,31 +5,30 @@
       - autojump-zsh
     state: present
 
-- name: create omz dir
-  file:
-    path: "{{ item }}"
-    state: directory
-    mode: '0755'
-  loop:
-    - ~/.oh-my-zsh
-    - /etc/skel/.oh-my-zsh
-
-- name: unpack oh-my-zsh.tar.gz
-  unarchive:
-    src: oh-my-zsh.tar.gz
+- name: rsync .oh-my-zsh
+  synchronize:
+    mode: push
+    src: "{{ inventory_dir }}/_files/.oh-my-zsh"
     dest: "{{ item }}"
-    remote_src: no
+    archive: no
+    links: no
+    recursive: yes
+    rsync_opts:
+      - "--delete"
+      - "--delete-excluded"
+      - "--exclude=.DS_Store"
+      - "--exclude=.idea*"
+      - "--exclude=.git*"
   loop:
-    - ~/.oh-my-zsh
-    - /etc/skel/.oh-my-zsh
-  changed_when: no
+    - /root
+    - /etc/skel
 
 - name: change default shell
   user:
     name: root
     shell: /bin/zsh
 
-- name: reset user and group for omz dir
+- name: reset user and group
   file:
     path: "{{ item }}"
     state: directory
@@ -38,7 +37,7 @@
     group: root
     mode: '0755'
   loop:
-    - ~/.oh-my-zsh
+    - /root/.oh-my-zsh
     - /etc/skel/.oh-my-zsh
   changed_when: no
 
@@ -48,7 +47,7 @@
     dest: "{{ item }}"
     backup: no
   loop:
-    - ~/.zshrc
+    - /root/.zshrc
     - /etc/skel/.zshrc
 
 - name: touch .zlogout
@@ -56,6 +55,6 @@
     path: "{{ item }}"
     state: touch
   loop:
-    - ~/.zlogout
+    - /root/.zlogout
     - /etc/skel/.zlogout
   changed_when: no
