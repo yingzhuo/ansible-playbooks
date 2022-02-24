@@ -54,6 +54,8 @@
     mode: '0644'
   loop:
     - www.yingzhuo.com.conf
+    - elasticsearch.yingzhuo.com.conf
+    - kibana.yingzhuo.com.conf
   notify:
     - restart nginx
 
