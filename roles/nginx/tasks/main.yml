@@ -29,11 +29,13 @@
     - yingzhuo.com.crt
     - yingzhuo.com.key
 
-- name: copy auth files
+- name: copy password files
   copy:
     src: "yingzhuo.com.password"
     dest: "/etc/nginx/htpasswd/yingzhuo.com.password"
     mode: '0644'
+  notify:
+    - restart nginx
 
 - name: copy html files
   file:
@@ -44,6 +46,22 @@
     mode: '0755'
   notify:
     - restart nginx
+
+- name: sync homepage content
+  synchronize:
+    mode: push
+    src: www
+    dest: /data/nginx/yingzhuo.com
+    archive: no
+    links: no
+    recursive: yes
+    rsync_opts:
+      - "--delete"
+      - "--delete-excluded"
+      - "--exclude=.DS_Store"
+      - "--exclude=.idea*"
+      - "--exclude=.git*"
+  changed_when: no
 
 - name: copy vhost config
   template:
