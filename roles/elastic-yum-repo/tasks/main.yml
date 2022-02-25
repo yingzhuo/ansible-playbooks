@@ -1,0 +1,7 @@
+- name: config yum repo
+  template:
+    src: elastic.repo.j2
+    dest: /etc/yum.repos.d/elastic.repo
+    owner: root
+    group: root
+    mode: '0644'
