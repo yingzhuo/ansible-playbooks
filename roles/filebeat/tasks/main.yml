@@ -1,0 +1,28 @@
+- name: config yum repo
+  template:
+    src: elastic.repo.j2
+    dest: /etc/yum.repos.d/elastic.repo
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: install filebeat
+  yum:
+    name: filebeat
+    state: present
+
+- name: copy primary config file
+  template:
+    src: filebeat.yml.j2
+    dest: /etc/filebeat/filebeat.yml
+    owner: root
+    group: root
+    mode: '0644'
+    backup: yes
+  notify: restart filebeat
+
+- name: startup filebeat
+  service:
+    name: filebeat
+    state: started
+    enabled: yes

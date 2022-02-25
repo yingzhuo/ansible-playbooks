@@ -25,6 +25,7 @@
         * [hostname](https://docs.ansible.com/ansible/2.9/modules/hostname_module.html#hostname-module)
         * [user](https://docs.ansible.com/ansible/2.9/modules/user_module.html#user-module)
         * [group](https://docs.ansible.com/ansible/2.9/modules/group_module.html#group-module)
+        * [stat](https://docs.ansible.com/ansible/2.9/modules/stat_module.html#stat-module)
     * [Jinjia2 - v2.9](https://docs.ansible.com/ansible/2.9/user_guide/playbooks_templating.html)
     * [Roles - v2.9](https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_roles.html)
     * [SpecialVariables - v2.9](https://docs.ansible.com/ansible/latest/reference_appendices/special_variables.html)

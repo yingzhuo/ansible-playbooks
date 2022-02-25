@@ -1,0 +1,58 @@
+filebeat.inputs:
+  - type: log
+    enabled: true
+    paths:
+      - /opt/java-app/playground/log/*.json
+    json.keys_under_root: true
+    json.overwrite_keys: true
+    fields_under_root: true
+    fields:
+      log_topic: "playground"
+
+  - type: log
+    enabled: true
+    paths:
+      - /var/log/nginx/www_access.log
+#    json.keys_under_root: true
+#    json.overwrite_keys: true
+    fields_under_root: true
+    fields:
+      log_topic: "nginx-www.yingzhuo.com-access"
+
+  - type: log
+    enabled: true
+    paths:
+      - /var/log/nginx/www_error.log
+#    json.keys_under_root: true
+#    json.overwrite_keys: true
+    fields_under_root: true
+    fields:
+      log_topic: "nginx-www.yingzhuo.com-error"
+
+output.elasticsearch:
+  hosts: [ "localhost:9200" ]
+  protocol: "http"
+  indices:
+    - index: "playground-%{+yyyy-MM-dd}"
+      when.contains:
+        log_topic: "playground"
+
+    - index: "www.yingzhuo.com-access-%{+yyyy-MM-dd}"
+      when.contains:
+        log_topic: "nginx-www.yingzhuo.com-access"
+
+    - index: "www.yingzhuo.com-error-%{+yyyy-MM-dd}"
+      when.contains:
+        log_topic: "nginx-www.yingzhuo.com-error"
+
+#setup.template.settings:
+#  index.number_of_shards: 1
+
+#setup.kibana:
+#  host: "10.211.55.4:5601"
+
+#processors:
+#  - add_host_metadata: ~
+#  - add_cloud_metadata: ~
+#  - add_docker_metadata: ~
+#  - add_kubernetes_metadata: ~
