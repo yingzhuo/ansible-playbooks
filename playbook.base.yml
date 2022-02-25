@@ -3,8 +3,6 @@
   roles:
     - yum
     - common
-    - vim
-    - oh-my-zsh
     - cleanup-script
     - ntp
     - firewall
