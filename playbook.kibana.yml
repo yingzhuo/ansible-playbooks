@@ -1,4 +1,4 @@
 - hosts: efk
   gather_facts: no
   roles:
-    - filebeat
+    - kibana

@@ -1,0 +1,4 @@
+- name: install kibana
+  yum:
+    name: kibana
+    state: present
