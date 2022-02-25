@@ -199,7 +199,8 @@ function `git_main_branch`.
 
 ### Deprecated aliases
 
-These are aliases that have been removed, renamed, or otherwise modified in a way that may, or may not, receive further support.
+These are aliases that have been removed, renamed, or otherwise modified in a way that may, or may not, receive further
+support.
 
 | Alias  | Command                                                | Modification                                           |
 | :----- | :----------------------------------------------------- | :----------------------------------------------------- |
@@ -230,7 +231,8 @@ These are aliases that have been removed, renamed, or otherwise modified in a wa
 
 ### Work in Progress (WIP)
 
-These features allow to pause a branch development and switch to another one (_"Work in Progress"_,  or wip). When you want to go back to work, just unwip it.
+These features allow to pause a branch development and switch to another one (_"Work in Progress"_, or wip). When you
+want to go back to work, just unwip it.
 
 | Command          | Description                                     |
 |:-----------------|:------------------------------------------------|

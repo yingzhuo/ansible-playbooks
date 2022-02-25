@@ -1,6 +1,7 @@
 # Rails
 
-This plugin adds completion for [Ruby On Rails Framework](https://rubyonrails.org/) and [Rake](https://ruby.github.io/rake/) commands, as well as some aliases for logs and environment variables.
+This plugin adds completion for [Ruby On Rails Framework](https://rubyonrails.org/)
+and [Rake](https://ruby.github.io/rake/) commands, as well as some aliases for logs and environment variables.
 
 To use it, add `rails` to the plugins array in your zshrc file:
 
@@ -65,8 +66,8 @@ plugins=(... rails)
 | `REP` | `RAILS_ENV=production`  | Sets `RAILS_ENV` to production  |
 | `RET` | `RAILS_ENV=test`        | Sets `RAILS_ENV` to test        |
 
-These are global aliases. Use in combination with a command or just run them
-separately. For example: `REP rake db:migrate` will migrate the production db.
+These are global aliases. Use in combination with a command or just run them separately. For
+example: `REP rake db:migrate` will migrate the production db.
 
 ### Legacy stuff
 
