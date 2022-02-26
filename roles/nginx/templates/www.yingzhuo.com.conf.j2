@@ -21,6 +21,7 @@ server {
 
     # 错误页面
     error_page 404 =302         /404.html;
+    error_page 401              /401.html;
     error_page 500 502 503 504  /50x.html;
 
     location /favicon.ico {
@@ -28,6 +29,11 @@ server {
     }
 
     location /404.html {
+        internal;
+        root            /data/nginx/yingzhuo.com/www;
+    }
+
+    location /401.html {
         internal;
         root            /data/nginx/yingzhuo.com/www;
     }
