@@ -1,4 +1,0 @@
-- hosts: efk
-  gather_facts: no
-  roles:
-    - kibana
