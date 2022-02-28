@@ -71,23 +71,6 @@
     cmd: "{{ install_dir }}/bin/mysql_ssl_rsa_setup --datadir={{ data_dir }}"
   changed_when: no
 
-- name: create log dir
-  file:
-    path: "{{ log_dir }}"
-    state: directory
-    owner: mysql
-    group: mysql
-    mode: '0755'
-
-- name: touch log file
-  file:
-    path: "{{ log_dir }}/mariadb.log"
-    state: touch
-    owner: mysql
-    group: mysql
-    mode: '0644'
-  changed_when: no
-
 - name: install service
   shell:
     cmd: "cp {{ install_dir }}/support-files/mysql.server /etc/init.d/mysqld"
