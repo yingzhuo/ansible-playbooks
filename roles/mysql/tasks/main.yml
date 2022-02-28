@@ -1,0 +1,104 @@
+# ----------------------------------------------------------------------------------------------------------------------
+# 安装MySQL8.0.28到CentOS上
+# 注意:
+#  (0) 由于网络因素MySQL需要的二进制包不从网上下载，在执行本role前，必须把mysql解压到/usr/local/mysql目录。切记!
+#  (1) 安装好以后root账号为空密码，依次执行一下sql语句设置密码，并允许root账户远程访问
+#    alter user 'root'@'localhost' identified by 'root';
+#    update mysql.user set host = '%' where host = 'localhost' and user = 'root';
+#    flush privileges;
+#  (2) 单节点MySQL实例不可用于生产环境
+# ----------------------------------------------------------------------------------------------------------------------
+
+- name: install ncurses
+  yum:
+    name:
+      - ncurses-libs
+      - ncurses-devel
+    state: present
+
+- name: create group for mysqld
+  group:
+    name: mysql
+    state: present
+
+- name: crete user for mysqld
+  user:
+    name: mysql
+    group: mysql
+    create_home: no
+    shell: /usr/sbin/nologin
+    state: present
+
+- name: create config dir
+  file:
+    path: "{{ config_dir }}"
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+
+- name: copy config file
+  template:
+    src: my.cnf.j2
+    dest: "{{ config_dir }}/my.cnf"
+    owner: root
+    group: root
+    mode: '0644'
+    backup: yes
+  notify: restart mysqld
+
+- name: create data dir
+  file:
+    path: "{{ data_dir }}"
+    state: directory
+    owner: mysql
+    group: mysql
+    mode: '0755'
+
+- name: test is data dir empty
+  find:
+    paths:
+      - "{{ data_dir }}"
+  register: files_found
+
+- name: init data dir
+  shell:
+    cmd: "{{ install_dir }}/bin/mysqld --initialize-insecure --user=mysql --basedir={{ install_dir }} --datadir={{ data_dir }}"
+  when: files_found.matched == 0
+
+- name: setup ssl for mysql
+  shell:
+    cmd: "{{ install_dir }}/bin/mysql_ssl_rsa_setup --datadir={{ data_dir }}"
+  changed_when: no
+
+- name: create log dir
+  file:
+    path: "{{ log_dir }}"
+    state: directory
+    owner: mysql
+    group: mysql
+    mode: '0755'
+
+- name: touch log file
+  file:
+    path: "{{ log_dir }}/mariadb.log"
+    state: touch
+    owner: mysql
+    group: mysql
+    mode: '0644'
+  changed_when: no
+
+- name: install service
+  shell:
+    cmd: "cp {{ install_dir }}/support-files/mysql.server /etc/init.d/mysqld"
+  changed_when: no
+
+- name: startup mysqld with reboot
+  shell:
+    cmd: "chkconfig --add mysqld"
+  changed_when: no
+
+- name: startup mysql
+  service:
+    name: mysql
+    state: started

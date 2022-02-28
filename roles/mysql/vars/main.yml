@@ -1,0 +1,4 @@
+install_dir: /usr/local/mysql
+data_dir: /data/mysql
+config_dir: /etc/mysql
+log_dir: /var/log/mariadb
