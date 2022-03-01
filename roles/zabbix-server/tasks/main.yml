@@ -21,3 +21,4 @@
   service:
     name: zabbix-server
     state: started
+    enabled: yes

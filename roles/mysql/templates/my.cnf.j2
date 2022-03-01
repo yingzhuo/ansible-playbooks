@@ -1,14 +1,14 @@
 [mysqld]
-basedir       = {{ install_dir }}
-datadir       = {{ data_dir }}
+basedir       = /usr/local/mysql
+datadir       = /data/mysql
 port          = 3306
 user          = mysql
-socket        = /tmp/mysql.sock
 
 [mysql]
 prompt        = (\\u@\\h) [\\d]>\\_
 
 [client]
-socket        = /tmp/mysql.sock
+protocol      = TCP
 user          = root
 password      = root
+host          = 127.0.0.1
