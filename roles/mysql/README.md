@@ -6,6 +6,9 @@
 
 ```sql
 alter user 'root'@'localhost' identified by 'root';
-update mysql.user set host = '%' where host = 'localhost' and user = 'root';
+update mysql.user
+set host = '%'
+where host = 'localhost'
+  and user = 'root';
 flush privileges;
 ```
