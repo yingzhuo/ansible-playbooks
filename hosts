@@ -11,3 +11,9 @@
 
 [mysql]
 10.211.55.4
+
+[zabbix_server]
+10.211.55.4
+
+[zabbix_agent]
+10.211.55.4

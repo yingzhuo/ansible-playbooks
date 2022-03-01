@@ -1,0 +1,22 @@
+- name: config yum repo
+  template:
+    src: zabbix.repo.j2
+    dest: /etc/yum.repos.d/zabbix.repo
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: install zabbix-server and more
+  yum:
+    name:
+      - zabbix-server-mysql
+      - zabbix-get
+      - zabbix-sender
+      - zabbix-web
+      - zabbix-web-mysql
+    state: present
+
+- name: starup zabbix-server
+  service:
+    name: zabbix-server
+    state: started
