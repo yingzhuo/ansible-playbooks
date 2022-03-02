@@ -15,10 +15,37 @@
     owner: root
     group: root
     mode: '0644'
+    backup: yes
   notify: restart zabbix-server
 
 - name: starup zabbix-server
   service:
     name: zabbix-server
+    state: started
+    enabled: yes
+
+- name: config httpd
+  template:
+    src: httpd/httpd.conf.j2
+    dest: /etc/httpd/conf/httpd.conf
+    owner: root
+    group: root
+    mode: '0644'
+    backup: yes
+  notify: restart httpd
+
+- name: config httpd site zabbix
+  template:
+    src: httpd/zabbix.conf.j2
+    dest: /etc/httpd/conf.d/zabbix.conf
+    owner: root
+    group: root
+    mode: '0644'
+    backup: yes
+  notify: restart httpd
+
+- name: startup httpd
+  service:
+    name: httpd
     state: started
     enabled: yes
