@@ -1,0 +1,4 @@
+- hosts: zabbix_agent
+  gather_facts: no
+  roles:
+    - zabbix-agent

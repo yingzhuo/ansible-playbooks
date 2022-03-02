@@ -1,0 +1,12 @@
+- name: isntall zabbix-agent and more
+  yum:
+    name:
+      - zabbix-agent
+      - zabbix-sender
+    state: present
+
+- name: startup zabbix-agent
+  service:
+    name: zabbix-agent
+    state: started
+    enabled: yes
