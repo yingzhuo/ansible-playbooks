@@ -74,6 +74,7 @@
     - www.yingzhuo.com.conf
     - elasticsearch.yingzhuo.com.conf
     - kibana.yingzhuo.com.conf
+    - zabbix.yingzhuo.com.conf
   notify:
     - restart nginx
 
