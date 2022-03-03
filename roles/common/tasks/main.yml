@@ -33,6 +33,8 @@
       - figlet
       - banner
       - cowsay
+      - finger
+      - mailx
     state: present
 
 - name: set timezone to Asia/Shanghai
