@@ -2,50 +2,51 @@
   yum:
     name:
       - zabbix-server-mysql
-      - zabbix-get
-      - zabbix-sender
-      - zabbix-web
       - zabbix-web-mysql
+      - zabbix-nginx-conf
     state: present
 
-- name: copy config file
+- name: copy zabbix server config file
   template:
     src: server/zabbix_server.conf.j2
     dest: /etc/zabbix/zabbix_server.conf
     owner: root
-    group: root
-    mode: '0644'
+    group: zabbix
     backup: yes
   notify: restart zabbix-server
 
-- name: starup zabbix-server
+- name: copy nginx config file
+  template:
+    src: nginx/zabbix.yingzhuo.com.conf.j2
+    dest: /etc/nginx/conf.d/zabbix.yingzhuo.com.conf
+    owner: root
+    group: root
+    backup: yes
+  notify: restart nginx
+
+- name: copy php config file
+  template:
+    src: php/php.ini.j2
+    dest: /etc/php.ini
+    owner: root
+    group: root
+    backup: yes
+  notify: restart php
+
+- name: start zabbix-server
   service:
     name: zabbix-server
     state: started
     enabled: yes
 
-- name: config httpd
-  template:
-    src: httpd/httpd.conf.j2
-    dest: /etc/httpd/conf/httpd.conf
-    owner: root
-    group: root
-    mode: '0644'
-    backup: yes
-  notify: restart httpd
-
-- name: config httpd site zabbix
-  template:
-    src: httpd/zabbix.conf.j2
-    dest: /etc/httpd/conf.d/zabbix.conf
-    owner: root
-    group: root
-    mode: '0644'
-    backup: yes
-  notify: restart httpd
-
-- name: startup httpd
+- name: start php
   service:
-    name: httpd
+    name: php-fpm
+    state: started
+    enabled: yes
+
+- name: start nginx
+  service:
+    name: nginx
     state: started
     enabled: yes

@@ -3,7 +3,12 @@
     name: zabbix-server
     state: restarted
 
-- name: restart httpd
+- name: restart nginx
   service:
-    name: httpd
+    name: nginx
+    state: restarted
+
+- name: restart php
+  service:
+    name: php-fpm
     state: restarted

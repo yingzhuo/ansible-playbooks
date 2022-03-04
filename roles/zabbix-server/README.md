@@ -11,7 +11,7 @@
 ```bash
 # rpm -ql zabbix-server-mysql
 /etc/logrotate.d/zabbix-server
-/etc/zabbix/zabbix_server.conf.j2
+/etc/zabbix/zabbix_server.conf.j2.j2
 /usr/lib/systemd/system/zabbix-server.service
 /usr/lib/tmpfiles.d/zabbix-server.conf
 /usr/lib/zabbix/alertscripts
@@ -31,7 +31,12 @@
 
 ```sql
 # 创建用户
+create database zabbix character set utf8 collate utf8_bin;
 create user 'zabbix'@'%' identified with mysql_native_password by 'zabbix';
 grant all privileges on zabbix.* to 'zabbix'@'%';
 flush privileges;
+```
+
+```bash
+zcat /usr/share/doc/zabbix-server-mysql-4.4.10/create.sql.gz | mysql -uzabbix -pzabbix zabbix
 ```
