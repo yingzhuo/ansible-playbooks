@@ -6,6 +6,11 @@
       - zabbix-nginx-conf
     state: present
 
+- name: delete old nginx config file
+  file:
+    path: /etc/nginx/conf.d/zabbix.conf
+    state: absent
+
 - name: copy zabbix server config file
   template:
     src: server/zabbix_server.conf.j2

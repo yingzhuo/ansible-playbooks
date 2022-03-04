@@ -11,7 +11,7 @@
 ```bash
 # rpm -ql zabbix-server-mysql
 /etc/logrotate.d/zabbix-server
-/etc/zabbix/zabbix_server.conf.j2.j2
+/etc/zabbix/zabbix_server.conf.j2
 /usr/lib/systemd/system/zabbix-server.service
 /usr/lib/tmpfiles.d/zabbix-server.conf
 /usr/lib/zabbix/alertscripts
