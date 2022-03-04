@@ -30,3 +30,11 @@
     description: epel
     state: present
   notify: make cache
+
+- name: reset CentOS-Base.repo
+  template:
+    src: CentOS-Base.repo.j2
+    dest: /etc/yum.repos.d/CentOS-Base.repo
+    owner: root
+    group: root
+    mode: '0644'

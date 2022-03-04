@@ -23,6 +23,7 @@
 
       # C与C++源码编译相关
       - make
+      - autoconf
       - gcc
       - gcc-c++
       - pcre-devel
