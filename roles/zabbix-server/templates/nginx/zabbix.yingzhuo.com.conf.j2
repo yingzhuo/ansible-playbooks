@@ -1,9 +1,16 @@
 server {
-    listen          80;
+    listen          443 ssl;
     server_name     zabbix.yingzhuo.com;
 
-    root    /usr/share/zabbix;
+    # 日志
+    error_log             /var/log/nginx/zabbix_error.log   error;
+    access_log            /var/log/nginx/zabbix_access.log  combined;
 
+    # https协议
+    ssl_certificate       /etc/nginx/ssl/yingzhuo.com.crt;
+    ssl_certificate_key   /etc/nginx/ssl/yingzhuo.com.key;
+
+    root    /usr/share/zabbix;
     index   index.php;
 
     location = /favicon.ico {
