@@ -1,3 +1,17 @@
+- name: add group zabbix
+  group:
+    name: zabbix
+
+- name: add user zabbix
+  user:
+    name: zabbix
+    groups:
+      - zabbix
+      - wheel
+    system: yes
+    create_home: no
+    append: no
+
 - name: install zabbix-agent and more
   yum:
     name:
