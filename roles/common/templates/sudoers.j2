@@ -84,8 +84,14 @@ Defaults    env_keep += "LC_TIME LC_ALL LANGUAGE LINGUAS _XKB_CHARSET XAUTHORITY
 # commands via sudo.
 #
 # Defaults   env_keep += "HOME"
-
 Defaults    secure_path = /sbin:/bin:/usr/sbin:/usr/bin
+
+#
+# If set, sudo will only run when the user is logged in to a real tty.
+# When this flag is set, sudo can only be run from a login session and not via other means such as cron or cgi-bin scripts.
+# This flag is off by default.
+#
+# Defaults  requiretty
 
 ## Next comes the main part: which users can run what software on 
 ## which machines (the sudoers file can be shared between multiple
