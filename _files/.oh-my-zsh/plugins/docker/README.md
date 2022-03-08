@@ -13,12 +13,12 @@ https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
 
 ## Settings
 
-By default, the completion doesn't allow option-stacking, meaning if you try to complete `docker run -it <TAB>` it won't
-work, because you're _stacking_ the
+By default, the completion doesn't allow option-stacking, meaning if you try to
+complete `docker run -it <TAB>` it won't work, because you're _stacking_ the
 `-i` and `-t` options.
 
-[You can enable it](https://github.com/docker/cli/commit/b10fb43048) by **adding the lines below to your zshrc file**,
-but be aware of the side effects:
+[You can enable it](https://github.com/docker/cli/commit/b10fb43048) by **adding
+the lines below to your zshrc file**, but be aware of the side effects:
 
 > This enables Zsh to understand commands like `docker run -it
 > ubuntu`. However, by enabling this, this also makes Zsh complete

@@ -1,6 +1,7 @@
 # pow plugin
 
-This plugin adds completion and commands for [pow](http://pow.cx/), a zero-configuration Rack server for macOS.
+This plugin adds completion and commands for [pow](http://pow.cx/), a
+zero-configuration Rack server for macOS.
 
 To use it, add pow to the plugins array of your zshrc file:
 

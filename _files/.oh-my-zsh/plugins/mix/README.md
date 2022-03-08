@@ -7,7 +7,6 @@ To use it, add `mix` to the plugins array in your zshrc file:
 ```zsh
 plugins=(... mix)
 ```
-
 ## Supported Task Types
 
 | Task Type                | Documentation                                            |

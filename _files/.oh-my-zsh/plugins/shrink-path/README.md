@@ -11,7 +11,6 @@ plugins=(... shrink-path)
 ## Examples
 
 For this directory tree:
-
 ```
 /home/
   me/
@@ -22,9 +21,7 @@ For this directory tree:
     f i g/
       baz/
 ```
-
 here are the results of calling `shrink_path <option> /home/me/foo/bar/quux`:
-
 ```
 Option        Result
 <none>        /h/m/f o/ba/q
@@ -42,7 +39,8 @@ Option        Result
 
 ## Usage
 
-For a fish-style working directory in your command prompt, add the following to your theme or zshrc:
+For a fish-style working directory in your command prompt, add the following to
+your theme or zshrc:
 
 ```zsh
 setopt prompt_subst
@@ -67,17 +65,18 @@ The following options are available:
 ```
 
 The long options can also be set via zstyle, like
-
 ```zsh
 zstyle :prompt:shrink_path fish yes
 ```
 
-Note: Directory names containing two or more consecutive spaces are not yet supported.
+Note: Directory names containing two or more consecutive spaces are not yet
+supported.
+
 
 ## Trick: toggle shrinking with a keyboard shortcut
 
-You can use the `expand` option to disable the path shrinking. You can combine that with a key binding widget to toggle
-path shrinking on and off.
+You can use the `expand` option to disable the path shrinking. You can combine that
+with a key binding widget to toggle path shrinking on and off.
 
 ```zsh
 # Toggle off path shrinking
@@ -109,7 +108,8 @@ Copyright (C) 2018-2020 by Pavel N. Krivitsky
 License: WTFPL <http://www.wtfpl.net>
 
 Ref: https://www.zsh.org/mla/workers/2009/msg00415.html
-https://www.zsh.org/mla/workers/2009/msg00419.html
+     https://www.zsh.org/mla/workers/2009/msg00419.html
+
 
 ## Misc
 

@@ -40,6 +40,7 @@ Commands that use `$APT` will use `apt` if installed or defer to `apt-get` other
 | mydeb   | `time dpkg-buildpackage -rfakeroot -us -uc`                              | Create a basic .deb package                                                                       |
 | ppap    | `sudo ppa-purge <ppa>`                                                   | Remove the specified PPA                                                                          |
 
+
 ## Functions
 
 | Function          | Usage                                 |Description                                                               |

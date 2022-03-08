@@ -1,7 +1,6 @@
 # FirewallD Plugin
 
-This plugin adds some aliases and functions for FirewallD using the `firewalld-cmd` command. To use it, add firewalld to
-your plugins array.
+This plugin adds some aliases and functions for FirewallD using the `firewalld-cmd` command. To use it, add firewalld to your plugins array.
 
 ```zsh
 plugins=(... firewalld)

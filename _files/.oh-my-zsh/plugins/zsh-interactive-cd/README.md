@@ -3,7 +3,6 @@
 This plugin adds a fish-like interactive tab completion for the `cd` command.
 
 To use it, add `zsh-interactive-cd` to the plugins array of your zshrc file:
-
 ```zsh
 plugins=(... zsh-interactive-cd)
 ```
@@ -12,8 +11,7 @@ plugins=(... zsh-interactive-cd)
 
 ## Usage
 
-Press tab for completion as usual, it'll launch fzf automatically. Check
-fzf’s [readme](https://github.com/junegunn/fzf#search-syntax) for more search syntax usage.
+Press tab for completion as usual, it'll launch fzf automatically. Check fzf’s [readme](https://github.com/junegunn/fzf#search-syntax) for more search syntax usage.
 
 ## Requirements
 

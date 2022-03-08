@@ -1,5 +1,4 @@
 # Spring Boot oh-my-zsh plugin
-
 oh-my-zsh Spring Boot plugin
 
 ## Spring Boot autocomplete plugin

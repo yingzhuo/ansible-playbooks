@@ -1,7 +1,6 @@
 # command-not-found plugin
 
-This plugin uses the command-not-found package for zsh to provide suggested packages to be installed if a command cannot
-be found.
+This plugin uses the command-not-found package for zsh to provide suggested packages to be installed if a command cannot be found.
 
 To use it, add `command-not-found` to the plugins array of your zshrc file:
 
@@ -10,7 +9,6 @@ plugins=(... command-not-found)
 ```
 
 An example of how this plugin works in Ubuntu:
-
 ```
 $ mutt
 The program 'mutt' can be found in the following packages:

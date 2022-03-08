@@ -1,7 +1,8 @@
 # Git Escape Magic
 
 This plugin is copied from the original at
-https://github.com/knu/zsh-git-escape-magic. All credit for the functionality enabled by this plugin should go to @knu.
+https://github.com/knu/zsh-git-escape-magic. All credit for the
+functionality enabled by this plugin should go to @knu.
 
 An excerpt from that project's readme explains its purpose.
 
@@ -11,4 +12,5 @@ An excerpt from that project's readme explains its purpose.
 
 To use this plugin, add it to your list of plugins in your `.zshrc` file.
 
-**NOTE**: If you use url-quote-magic, it must be included before this plugin runs to prevent any conflicts.
+**NOTE**: If you use url-quote-magic, it must be included before this
+plugin runs to prevent any conflicts.

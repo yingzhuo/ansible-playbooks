@@ -31,7 +31,6 @@ myvirtualenv
 ```
 
 We can disable this behaviour by setting `DISABLE_VENV_CD=1` before Oh My Zsh is sourced:
-
 ```zsh
 DISABLE_VENV_CD=1
 plugins=(... virtualenvwrapper)

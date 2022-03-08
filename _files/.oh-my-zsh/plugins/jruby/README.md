@@ -10,8 +10,7 @@ plugins=(... jruby)
 
 ## Requirements
 
-This plugin assumes you already have jruby installed and available in your [path](https://www.jruby.org/getting-started)
-.
+This plugin assumes you already have jruby installed and available in your [path](https://www.jruby.org/getting-started).
 
 ## Aliases
 
