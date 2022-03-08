@@ -8,10 +8,11 @@ server {
 }
 
 server {
-    listen       443 ssl;
-    server_name  www.yingzhuo.com;
+    # 基本
+    listen                  443 ssl;
+    server_name             www.yingzhuo.com;
 
-    # https协议
+    # https相关
     ssl_certificate       /etc/nginx/ssl/yingzhuo.com.crt;
     ssl_certificate_key   /etc/nginx/ssl/yingzhuo.com.key;
 
@@ -19,14 +20,16 @@ server {
     error_log             /var/log/nginx/www_error.log   error;
     access_log            /var/log/nginx/www_access.log  combined;
 
+    # favicon.ico
+    location = /favicon.ico {
+        log_not_found   off;
+        root            /data/nginx/yingzhuo.com/www;
+    }
+
     # 错误页面
     error_page 404 =302         /404.html;
     error_page 401              /401.html;
     error_page 500 502 503 504  /50x.html;
-
-    location /favicon.ico {
-        root            /data/nginx/yingzhuo.com/www;
-    }
 
     location /404.html {
         internal;
@@ -52,8 +55,8 @@ server {
 
     # 主页
     location / {
-        root   /data/nginx/yingzhuo.com/www;
-        index  index.html;
+        root            /data/nginx/yingzhuo.com/www;
+        index           index.html;
     }
 
     # status页面
@@ -71,11 +74,11 @@ server {
         limit_rate                  4096k;
 
         # HttpBasic验证
-        auth_basic            HttpBasic;
-        auth_basic_user_file  /etc/nginx/htpasswd/yingzhuo.com.password;
+        auth_basic                  HttpBasic;
+        auth_basic_user_file        /etc/nginx/htpasswd/yingzhuo.com.password;
 
-        alias   /data/nginx/yingzhuo.com/download;
-        index   index.html;
+        alias                       /data/nginx/yingzhuo.com/download;
+        index                       index.html;
     }
 
     # 负载均衡后端

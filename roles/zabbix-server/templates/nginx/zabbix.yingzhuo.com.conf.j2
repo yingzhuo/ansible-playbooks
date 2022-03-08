@@ -1,6 +1,15 @@
 server {
-    listen          443 ssl;
-    server_name     zabbix.yingzhuo.com;
+    listen               80;
+    server_name          zabbix.yingzhuo.com;
+
+    location / {
+        rewrite ^/(.*) https://zabbix.yingzhuo.com/$1 permanent;
+    }
+}
+
+server {
+    listen                443 ssl;
+    server_name           zabbix.yingzhuo.com;
 
     # 日志
     error_log             /var/log/nginx/zabbix_error.log   error;
