@@ -56,6 +56,12 @@ server {
         index  index.html;
     }
 
+    # status页面
+    location = /status {
+        stub_status     on;
+        access_log      off;
+    }
+
     # 下载服务
     location /download {
         # 下载服务器
