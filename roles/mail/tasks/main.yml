@@ -1,3 +1,8 @@
+- name: uninstall sendmail
+  yum:
+    name: sendmail
+    state: absent
+
 - name: install mainx and more
   yum:
     name: mailx
