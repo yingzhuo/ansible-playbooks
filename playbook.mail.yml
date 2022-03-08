@@ -1,0 +1,4 @@
+- hosts: zabbix_server
+  gather_facts: no
+  roles:
+    - mail
