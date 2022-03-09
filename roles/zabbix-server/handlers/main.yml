@@ -3,6 +3,11 @@
     name: zabbix-server
     state: restarted
 
+- name: restart zabbix-java-gateway
+  service:
+    name: zabbix-java-gateway
+    state: restarted
+
 - name: restart nginx
   service:
     name: nginx

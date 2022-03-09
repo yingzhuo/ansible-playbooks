@@ -7,6 +7,20 @@
       - zabbix-nginx-conf
     state: present
 
+- name: install zabbix-java-gateway
+  yum:
+    name: zabbix-java-gateway
+    state: present
+
+- name: copy zabbix java gateway config file
+  template:
+    src: server/zabbix_java_gateway.conf.j2
+    dest: /etc/zabbix/zabbix_java_gateway.conf
+    owner: root
+    group: root
+    backup: yes
+  notify: restart zabbix-java-gateway
+
 - name: delete old nginx config file
   file:
     path: /etc/nginx/conf.d/zabbix.conf
@@ -17,7 +31,7 @@
     src: server/zabbix_server.conf.j2
     dest: /etc/zabbix/zabbix_server.conf
     owner: root
-    group: zabbix
+    group: root
     backup: yes
   notify: restart zabbix-server
 
@@ -52,6 +66,12 @@
 - name: start zabbix-server
   service:
     name: zabbix-server
+    state: started
+    enabled: yes
+
+- name: start zabbix-java-gateway
+  service:
+    name: zabbix-java-gateway
     state: started
     enabled: yes
 
