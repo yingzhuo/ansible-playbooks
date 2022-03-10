@@ -1,8 +1,9 @@
-- name: install ncurses
+- name: install ncurses and more
   yum:
     name:
       - ncurses-libs
       - ncurses-devel
+      - libaio
     state: present
 
 - name: create group for mysqld
@@ -69,6 +70,15 @@
   shell:
     cmd: "chkconfig --add mysqld"
   changed_when: no
+
+- name: remove config for mariadb
+  file:
+    path: /etc/my.cnf
+    state: absent
+    force: yes
+  with_items:
+    - /etc/my.cnf
+    - /etc/my.cnf.d
 
 - name: startup mysql
   service:
