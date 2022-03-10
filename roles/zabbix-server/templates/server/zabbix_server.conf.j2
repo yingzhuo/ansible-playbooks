@@ -17,7 +17,7 @@ ListenPort=10051
 #
 # Mandatory: no
 # Default:
-SourceIP=10.211.55.4
+# SourceIP=
 
 ### Option: LogType
 #	Specifies where log messages are written to:
@@ -35,7 +35,6 @@ SourceIP=10.211.55.4
 # Mandatory: yes, if LogType is set to file, otherwise no
 # Default:
 # LogFile=
-
 LogFile=/var/log/zabbix/zabbix_server.log
 
 ### Option: LogFileSize
@@ -46,7 +45,6 @@ LogFile=/var/log/zabbix/zabbix_server.log
 # Range: 0-1024
 # Default:
 # LogFileSize=1
-
 LogFileSize=64
 
 ### Option: DebugLevel
@@ -61,7 +59,7 @@ LogFileSize=64
 # Mandatory: no
 # Range: 0-5
 # Default:
-DebugLevel=2
+DebugLevel=3
 
 ### Option: PidFile
 #	Name of PID file.
@@ -78,7 +76,6 @@ PidFile=/var/run/zabbix/zabbix_server.pid
 # Mandatory: no
 # Default:
 # SocketDir=/tmp
-
 SocketDir=/var/run/zabbix
 
 ### Option: DBHost
@@ -287,7 +284,7 @@ DBPort=3306
 # Mandatory: no
 # Default:
 # JavaGateway=
-JavaGateway=10.211.55.4
+JavaGateway=127.0.0.1
 
 ### Option: JavaGatewayPort
 #	Port that Zabbix Java gateway listens on.
@@ -374,8 +371,6 @@ SNMPTrapperFile=/var/log/snmptrap/snmptrap.log
 # Mandatory: no
 # Default:
 # ListenIP=0.0.0.0
-
-# ListenIP=127.0.0.1
 
 ### Option: HousekeepingFrequency
 #	How often Zabbix will perform housekeeping procedure (in hours).
@@ -473,7 +468,6 @@ SNMPTrapperFile=/var/log/snmptrap/snmptrap.log
 # Range: 1-30
 # Default:
 # Timeout=3
-
 Timeout=4
 
 ### Option: TrapperTimeout

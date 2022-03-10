@@ -51,7 +51,8 @@ LogFileSize=64
 # Mandatory: no
 # Range: 0-5
 # Default:
-DebugLevel=2
+# DebugLevel=3
+DebugLevel=3
 
 ### Option: SourceIP
 #	Source IP address for outgoing connections.
@@ -100,6 +101,7 @@ Server=0.0.0.0/0
 # Mandatory: no
 # Range: 1024-32767
 # Default:
+# ListenPort=10050
 ListenPort=10050
 
 ### Option: ListenIP
@@ -132,7 +134,6 @@ ListenPort=10050
 # Mandatory: no
 # Default:
 # ServerActive=
-ServerActive=10.211.55.4
 
 ### Option: Hostname
 #	Unique, case sensitive hostname.
@@ -142,8 +143,6 @@ ServerActive=10.211.55.4
 # Mandatory: no
 # Default:
 # Hostname=
-
-Hostname=Zabbix server
 
 ### Option: HostnameItem
 #	Item used for generating Hostname if it is undefined. Ignored if Hostname is defined.
@@ -282,7 +281,6 @@ Hostname=Zabbix server
 # Mandatory: no
 # Default:
 # Include=
-
 Include=/etc/zabbix/zabbix_agentd.d/*.conf
 
 # Include=/usr/local/etc/zabbix_agentd.userparams.conf
