@@ -66,3 +66,12 @@
     group: root
     mode: '0644'
     force: yes
+
+- name: set /etc/sysctl.conf
+  template:
+    src: sysctl.conf.j2
+    dest: /etc/sysctl.conf
+    owner: root
+    group: root
+    mode: '0644'
+  notify: reload sysctl
