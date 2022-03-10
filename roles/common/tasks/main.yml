@@ -31,11 +31,8 @@
       - zlib-devel
 
       # 其他
-      - figlet
-      - banner
-      - cowsay
-      - finger
       - mailx
+      - finger
     state: present
 
 - name: set timezone to Asia/Shanghai
