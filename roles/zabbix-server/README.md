@@ -23,20 +23,26 @@
 /usr/share/doc/zabbix-server-mysql-4.4.10/ChangeLog
 /usr/share/doc/zabbix-server-mysql-4.4.10/NEWS
 /usr/share/doc/zabbix-server-mysql-4.4.10/README
-/usr/share/doc/zabbix-server-mysql-4.4.10/create.sql.gz  <- yum安装后自带初始化脚本
+/usr/share/doc/zabbix-server-mysql-4.4.10/create.sql.gz
 /usr/share/man/man8/zabbix_server.8.gz
 /var/log/zabbix
 /var/run/zabbix
 ```
 
 ```sql
-# 创建用户
+-- 创建数据库
+drop database if exists zabbix;
 create database zabbix character set utf8 collate utf8_bin;
+
+-- 创建用户
+drop user if exists 'zabbix'@'%';
 create user 'zabbix'@'%' identified with mysql_native_password by 'zabbix';
 grant all privileges on zabbix.* to 'zabbix'@'%';
+
+-- 刷新权限
 flush privileges;
 ```
 
 ```bash
-zcat /usr/share/doc/zabbix-server-mysql-4.4.10/create.sql.gz | mysql -uzabbix -pzabbix zabbix
+zcat /usr/share/doc/zabbix-server-mysql-4.4.10/create.sql.gz | mysql -uzabbix -p zabbix
 ```
