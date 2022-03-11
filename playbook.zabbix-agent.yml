@@ -1,4 +1,4 @@
 - hosts: zabbix_agent
-  gather_facts: yes
+  gather_facts: no
   roles:
     - zabbix-agent

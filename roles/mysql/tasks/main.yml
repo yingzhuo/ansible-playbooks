@@ -45,7 +45,7 @@
     group: mysql
     mode: '0755'
 
-- name: test is data dir empty
+- name: test if data dir empty
   find:
     paths:
       - "{{ data_dir }}"
@@ -71,14 +71,14 @@
     cmd: "chkconfig --add mysqld"
   changed_when: no
 
-- name: remove config for mariadb
+- name: remove unused config files
   file:
-    path: /etc/my.cnf
+    path: "{{ item }}"
     state: absent
     force: yes
   with_items:
     - /etc/my.cnf
-    - /etc/my.cnf.d
+    - /etc/my.cnf.d/
 
 - name: startup mysql
   service:
