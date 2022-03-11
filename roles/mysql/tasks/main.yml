@@ -59,7 +59,7 @@
 - name: setup ssl for mysql
   shell:
     cmd: "{{ install_dir }}/bin/mysql_ssl_rsa_setup --datadir={{ data_dir }}"
-  changed_when: no
+  when: files_found.matched == 0
 
 - name: install service
   shell:
