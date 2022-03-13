@@ -28,6 +28,17 @@
     mode: '0644'
   notify: restart zabbix-agent
 
+- name: copy config file for zabbix-agent service
+  template:
+    src: zabbix_agented.service.j2
+    dest: /usr/lib/systemd/system/zabbix-agent.service
+    owner: root
+    group: root
+    mode: '0644'
+  notify:
+    - systemctl daemon reaload
+    - restart zabbix-agent
+
 - name: copy custom key for zabbix-agent
   copy:
     src: "zabbix_agentd.d/{{ item }}"
