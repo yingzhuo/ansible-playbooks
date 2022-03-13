@@ -49,8 +49,7 @@
     mode: '0644'
   notify: restart zabbix-agent
   with_items:
-    - yingzhuo.keys.memory.conf
-    - yingzhuo.keys.security.conf
+    - yingzhuo.keys.misc.conf
 
 - name: start zabbix-agent
   service:
