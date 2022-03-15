@@ -5,10 +5,13 @@
 * 安装好以后root账号为空密码，依次执行一下sql语句设置密码，并允许root账户远程访问
 
 ```sql
+-- 在非生产环境下，建议使用以下脚本 
 alter user 'root'@'localhost' identified by 'root';
+
 update mysql.user
 set host = '%'
 where host = 'localhost'
   and user = 'root';
+
 flush privileges;
 ```
