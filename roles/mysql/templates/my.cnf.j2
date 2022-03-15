@@ -1,14 +1,15 @@
 [mysqld]
-basedir       = /usr/local/mysql
-datadir       = /data/mysql
-port          = 3306
-user          = mysql
+basedir                 = /usr/local/mysql
+datadir                 = /data/mysql
+port                    = 3306
+user                    = mysql
 
 [mysql]
-prompt        = (\\u@\\h) [\\d]>\\_
+prompt                  = (\\u@\\h) [\\d]>\\_
+skip_auto_rehash
 
 [client]
-protocol      = TCP
-user          = root
-password      = root
-host          = 127.0.0.1
+protocol                = TCP
+host                    = 127.0.0.1
+user                    = root
+password                = root

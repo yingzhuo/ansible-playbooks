@@ -34,7 +34,7 @@
     owner: root
     group: root
     mode: '0644'
-    backup: yes
+    backup: no
   notify: restart mysqld
 
 - name: create data dir
