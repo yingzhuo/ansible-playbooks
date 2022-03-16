@@ -2,27 +2,51 @@
 
 # ======================================================================================================================
 [mysql]
-prompt                          = (\\u@\\h) [\\d]>\\_
+prompt                              = (\\u@\\h) [\\d]>\\_
 
 # ======================================================================================================================
 [client]
-protocol                        = TCP
-host                            = 127.0.0.1
-user                            = root
-password                        = root
+protocol                            = TCP
+host                                = 127.0.0.1
+user                                = root
+password                            = root
 skip_auto_rehash
+
+# ======================================================================================================================
+[mysqld_safe]
 
 # ======================================================================================================================
 [mysqld]
 
+###
 # 基本信息
-user                            = mysql
-basedir                         = /usr/local/mysql
-datadir                         = /data/mysql
-tmpdir                          = /tmp
-port                            = 3306
-bind_address                    = 0.0.0.0
+###
+user                                = mysql
+basedir                             = /usr/local/mysql
+datadir                             = /data/mysql
+tmpdir                              = /tmp
+port                                = 3306
+bind_address                        = 0.0.0.0
 
+###
+# 安全相关
+###
+
+# 是否强制要求使用SSL连接
+require_secure_transport            = OFF
+
+###
 # 日志相关
-log_error                       = /data/mysql/error.log
-log_timestamps                  = SYSTEM
+###
+log_error                           = /data/mysql/error.log
+log_timestamps                      = SYSTEM
+
+###
+# 插件相关
+###
+
+# 加载插件
+plugin_load_add                     = validate_password.so
+
+# 各插件启用或禁用
+validate_password                   = OFF
