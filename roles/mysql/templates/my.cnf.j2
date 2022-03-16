@@ -2,14 +2,14 @@
 
 # ======================================================================================================================
 [mysql]
-prompt                              = (\\u@\\h) [\\d]>\\_
+prompt                                  = (\\u@\\h) [\\d]>\\_
 
 # ======================================================================================================================
 [client]
-protocol                            = TCP
-host                                = 127.0.0.1
-user                                = root
-password                            = root
+protocol                                = TCP
+host                                    = 127.0.0.1
+user                                    = root
+password                                = root
 skip_auto_rehash
 
 # ======================================================================================================================
@@ -21,32 +21,39 @@ skip_auto_rehash
 ###
 # 基本信息
 ###
-user                                = mysql
-basedir                             = /usr/local/mysql
-datadir                             = /data/mysql
-tmpdir                              = /tmp
-port                                = 3306
-bind_address                        = 0.0.0.0
+user                                    = mysql
+basedir                                 = {{ install_dir }}
+datadir                                 = {{ data_dir }}
+tmpdir                                  = /tmp
+port                                    = 3306
+bind_address                            = 0.0.0.0
 
 ###
 # 安全相关
 ###
 
 # 是否强制要求使用SSL连接
-require_secure_transport            = OFF
+require_secure_transport                = OFF
 
 ###
 # 日志相关
 ###
-log_error                           = /data/mysql/error.log
-log_timestamps                      = SYSTEM
+log_error                               = /data/mysql/error.log
+log_timestamps                          = SYSTEM
 
 ###
 # 插件相关
 ###
 
 # 加载插件
-plugin_load_add                     = validate_password.so
+plugin_load_add                         = validate_password.so
 
-# 各插件启用或禁用
-validate_password                   = OFF
+# "validate_password" 插件详细配置
+validate_password                       = OFF
+validate_password_dictionary_file       = {{ data_dir }}/validate_password.dict
+validate_password_policy                = STRONG
+validate_password_length                = 8
+validate_password_mixed_case_count      = 1
+validate_password_number_count          = 1
+validate_password_special_char_count    = 1
+validate_password_check_user_name       = ON

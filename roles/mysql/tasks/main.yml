@@ -67,6 +67,15 @@
     cmd: "cp {{ install_dir }}/support-files/mysql.server /etc/init.d/mysqld"
   changed_when: no
 
+- name: copy validate password dict file
+  template:
+    src: validate_password.dict.j2
+    dest: "{{ data_dir }}/validate_password.dict"
+    owner: mysql
+    group: mysql
+    mode: '0644'
+  notify: restart mysqld
+
 - name: startup mysqld with reboot
   shell:
     cmd: "chkconfig --add mysqld"
