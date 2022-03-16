@@ -37,6 +37,7 @@
     owner: root
     group: root
     mode: '0644'
+  notify: restart mysqld_multi
 
 # 注意: --initialize-insecure 指初始化数据库给root用户设置空密码
 - name: init data dir
@@ -55,3 +56,24 @@
     - "{{ install_dir }}/bin/mysql_ssl_rsa_setup --datadir={{ data_dir_3306 }}"
     - "{{ install_dir }}/bin/mysql_ssl_rsa_setup --datadir={{ data_dir_3307 }}"
   changed_when: no
+
+- name: remove unused config files
+  file:
+    path: "{{ item }}"
+    state: absent
+    force: yes
+  with_items:
+    - /etc/my.cnf
+    - /etc/my.cnf.d/
+
+- name: copy validate password dict file
+  template:
+    src: validate_password.dict.j2
+    dest: "{{ item }}/validate_password.dict"
+    owner: mysql
+    group: mysql
+    mode: '0644'
+  with_items:
+    - "{{ data_dir_3306 }}"
+    - "{{ data_dir_3307 }}"
+  notify: restart mysqld_multi
