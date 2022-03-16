@@ -16,6 +16,12 @@ skip_auto_rehash
 [mysqld_safe]
 
 # ======================================================================================================================
+#[mysqld_multi]
+#mysqld                                  = {{ install_dir }}/bin/mysqld_safe
+#mysqladmin                              = {{ install_dir }}/bin/mysqladmin
+#log                                     = {{ install_dir }}/bin/mysqld_multi.log
+
+# ======================================================================================================================
 [mysqld]
 
 ###
