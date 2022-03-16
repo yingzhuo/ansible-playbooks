@@ -14,17 +14,11 @@ password                                = root
 [mysqld_safe]
 
 # ======================================================================================================================
-#[mysqld_multi]
-#mysqld                                  = {{ install_dir }}/bin/mysqld_safe
-#mysqladmin                              = {{ install_dir }}/bin/mysqladmin
-#log                                     = {{ install_dir }}/bin/mysqld_multi.log
-
-# ======================================================================================================================
 [mysqld]
 
-###
+# -------
 # 基本信息
-###
+# -------
 user                                    = mysql
 basedir                                 = {{ install_dir }}
 datadir                                 = {{ data_dir }}
@@ -32,22 +26,22 @@ tmpdir                                  = /tmp
 port                                    = 3306
 bind_address                            = 0.0.0.0
 
-###
+# -------
 # 安全相关
-###
+# -------
 
 # 是否强制要求使用SSL连接
 require_secure_transport                = OFF
 
-###
+# -------
 # 日志相关
-###
+# -------
 log_error                               = error.log
 log_timestamps                          = SYSTEM
 
-###
+# -------
 # 插件相关
-###
+# -------
 
 # 加载插件
 plugin_load_add                         = validate_password.so
