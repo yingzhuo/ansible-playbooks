@@ -1,0 +1,4 @@
+install_dir: /usr/local/mysql
+config_dir: /etc/mysql
+data_dir_3306: /data/mysql-instance-3306
+data_dir_3307: /data/mysql-instance-3307

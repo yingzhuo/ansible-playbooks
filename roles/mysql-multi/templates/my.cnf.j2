@@ -1,4 +1,3 @@
-# author: 应卓
 
 # ======================================================================================================================
 [mysql]
@@ -16,10 +15,9 @@ password                                = root
 [mysqld_safe]
 
 # ======================================================================================================================
-#[mysqld_multi]
-#mysqld                                  = {{ install_dir }}/bin/mysqld_safe
-#mysqladmin                              = {{ install_dir }}/bin/mysqladmin
-#log                                     = {{ install_dir }}/bin/mysqld_multi.log
+[mysqld_multi]
+mysqld                                  = {{ install_dir }}/bin/mysqld_safe
+mysqladmin                              = {{ install_dir }}/bin/mysqladmin
 
 # ======================================================================================================================
 [mysqld]
@@ -29,9 +27,7 @@ password                                = root
 ###
 user                                    = mysql
 basedir                                 = {{ install_dir }}
-datadir                                 = {{ data_dir }}
 tmpdir                                  = /tmp
-port                                    = 3306
 bind_address                            = 0.0.0.0
 
 ###
@@ -47,19 +43,13 @@ require_secure_transport                = OFF
 log_error                               = error.log
 log_timestamps                          = SYSTEM
 
-###
-# 插件相关
-###
+# ======================================================================================================================
+[mysqld3306]
+port                                    = 3306
+datadir                                 = {{ data_dir_3306 }}
+socket                                  = /tmp/mysql.3306.socket
 
-# 加载插件
-plugin_load_add                         = validate_password.so
-
-# "validate_password" 插件详细配置
-validate_password                       = OFF
-validate_password_dictionary_file       = {{ data_dir }}/validate_password.dict
-validate_password_policy                = STRONG
-validate_password_length                = 8
-validate_password_mixed_case_count      = 1
-validate_password_number_count          = 1
-validate_password_special_char_count    = 1
-validate_password_check_user_name       = ON
+[mysqld3307]
+port                                    = 3307
+datadir                                 = {{ data_dir_3307 }}
+socket                                  = /tmp/mysql.3307.socket
