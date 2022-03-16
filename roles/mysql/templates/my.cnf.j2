@@ -1,3 +1,5 @@
+# author: 应卓
+
 # ======================================================================================================================
 [mysql]
 prompt                          = (\\u@\\h) [\\d]>\\_
@@ -17,8 +19,9 @@ skip_auto_rehash
 user                            = mysql
 basedir                         = /usr/local/mysql
 datadir                         = /data/mysql
-port                            = 3306
 tmpdir                          = /tmp
+port                            = 3306
+bind_address                    = 0.0.0.0
 
 # 日志相关
 log_error                       = /data/mysql/error.log
