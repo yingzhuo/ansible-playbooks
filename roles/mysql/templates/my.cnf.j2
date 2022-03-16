@@ -1,15 +1,25 @@
-[mysqld]
-basedir                 = /usr/local/mysql
-datadir                 = /data/mysql
-port                    = 3306
-user                    = mysql
-
+# ======================================================================================================================
 [mysql]
-prompt                  = (\\u@\\h) [\\d]>\\_
+prompt                          = (\\u@\\h) [\\d]>\\_
+
+# ======================================================================================================================
+[client]
+protocol                        = TCP
+host                            = 127.0.0.1
+user                            = root
+password                        = root
 skip_auto_rehash
 
-[client]
-protocol                = TCP
-host                    = 127.0.0.1
-user                    = root
-password                = root
+# ======================================================================================================================
+[mysqld]
+
+# 基本信息
+user                            = mysql
+basedir                         = /usr/local/mysql
+datadir                         = /data/mysql
+port                            = 3306
+tmpdir                          = /tmp
+
+# 日志相关
+log_error                       = /data/mysql/error.log
+log_timestamps                  = SYSTEM

@@ -51,6 +51,7 @@
       - "{{ data_dir }}"
   register: files_found
 
+# 注意: --initialize-insecure 指初始化数据库给root用户设置空密码
 - name: init data dir
   shell:
     cmd: "{{ install_dir }}/bin/mysqld --initialize-insecure --user=mysql --basedir={{ install_dir }} --datadir={{ data_dir }}"
