@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-
-/usr/bin/mv {{ data_dir }}/slow.log {{ data_dir }}/slow.log."$(/bin/date +%s)"
-{{ install_dir }}/bin/mysql -e "FLUSH SLOW LOGS;"

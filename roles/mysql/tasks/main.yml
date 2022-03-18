@@ -97,18 +97,18 @@
 
 - name: copy mysql-flush-slow.sh
   template:
-    src: mysql-flush-slow-log.sh.j2
-    dest: /usr/sbin/mysql-flush-slow-log.sh
+    src: tools/mysql-flush-logs.sh.j2
+    dest: /usr/sbin/mysql-flush-logs.sh
     owner: root
     group: root
     mode: '0755'
     backup: no
 
-- name: set crontab for flush slow log
+- name: set crontab for flush log tools
   cron:
-    name: "flush mysql slow log"
+    name: "flush mysql logs"
     user: root
     minute: "15"
     hour: "0"
-    job: "/usr/sbin/mysql-flush-slow-log.sh"
+    job: "/usr/sbin/mysql-flush-logs.sh"
     backup: no
