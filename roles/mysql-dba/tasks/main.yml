@@ -15,12 +15,18 @@
     group: root
     mode: '0755'
 
-- name: copy dba tools
+- name: copy dba tools (makefile)
   copy:
-    src: "{{ item }}"
-    dest: "/root/sbin/{{ item }}"
+    src: Makefile
+    dest: /root/sbin/myql-management.makefile
     owner: root
     group: root
     mode: '0644'
-  with_items:
-    - myql-management.makefile
+
+- name: copy dba tools (awk)
+  copy:
+    src: mysql-extract-slow-log.awk
+    dest: /root/sbin/mysql-extract-slow-log.awk
+    owner: root
+    group: root
+    mode: '0644'

@@ -11,6 +11,7 @@ usage:
 	@echo "truncate-general-log      : 切断通用日志"
 	@echo "backup-slow-log           : 备份慢查询文件"
 	@echo "truncate-slow-log         : 切断慢查询日志"
+	@echo "extract-slow-log         : 显示slow-sql"
 	@echo "=============================================================="
 
 backup-slow-log:
@@ -26,4 +27,7 @@ backup-general-log:
 truncate-general-log:
 	@rm -rf $(mysql_data_dir)/$(general_log_name).$(timestamp)
 
-.PHONY: usage backup-slow-log truncate-slow-log truncate-general-log backup-general-log
+extract-slow-log:
+	@awk -f /root/sbin/mysql-extract-slow-log.awk $(mysql_data_dir)/$(slow_log_name)
+
+.PHONY: usage backup-slow-log truncate-slow-log truncate-general-log backup-general-log extract-slow-log

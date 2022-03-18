@@ -94,3 +94,21 @@
   service:
     name: mysql
     state: started
+
+- name: copy mysql-flush-slow.sh
+  template:
+    src: mysql-flush-slow-log.sh.j2
+    dest: /usr/sbin/mysql-flush-slow-log.sh
+    owner: root
+    group: root
+    mode: '0755'
+    backup: no
+
+- name: set crontab for flush slow log
+  cron:
+    name: "flush mysql slow log"
+    user: root
+    minute: "15"
+    hour: "0"
+    job: "/usr/sbin/mysql-flush-slow-log.sh"
+    backup: no
