@@ -50,12 +50,12 @@ log_error                               = error.log
 log_timestamps                          = SYSTEM                                                                        # 日志时区不使用UTC，而跟随系统
 log_output                              = FILE                                                                          # 通用日志和慢查询日志记录格式 (FILE | TABLE)
 
-general_log                             = OFF                                                                           # 通用日志
+general_log                             = ON                                                                            # 通用日志
 general_log_file                        = general.log                                                                   # 通用日志位置
 
 slow_query_log                          = ON                                                                            # 慢查询日志
 slow_query_log_file                     = slow.log                                                                      # 慢查询日志位置
-long_query_time                         = 2.0                                                                           # 慢查询阈值 (秒) (线程被锁时间不包含在内)
+long_query_time                         = 5.0                                                                           # 慢查询阈值 (秒) (线程被锁时间不包含在内)
 min_examined_row_limit                  = 100                                                                           # 扫描行数小于此值的SQL不记录到慢查询日志
 log_queries_not_using_indexes           = ON                                                                            # 没有使用索引的查询记录到慢查询日志
 log_throttle_queries_not_using_indexes  = 10                                                                            # 限制每分钟同样的没有使用索引而被记录到慢查询的日志的条数
