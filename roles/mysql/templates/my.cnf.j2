@@ -30,11 +30,18 @@ bind_address                            = 0.0.0.0                               
 # 字符集相关
 # -------
 character_set_server                    = utf8mb4
+collation_server                        = utf8mb4_bin
 
 # -------
 # 安全相关
 # -------
 require_secure_transport                = OFF                                                                           # 是否强制要求使用SSL连接
+default_authentication_plugin           = caching_sha2_password
+
+# -------
+# SQL MODE
+# -------
+sql_mode                                = ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION
 
 # -------
 # 日志相关
@@ -66,10 +73,12 @@ skip_archive                            = ON                                    
 # 插件相关
 # -------
 
-# 加载插件
-plugin_load_add                         = validate_password.so
+# "mysqlx" 插件
+skip_mysqlx                             = ON                                                                            # 禁用此插件
+skip_mysqlx_cache_cleaner               = ON                                                                            # 禁用此插件
 
-# "validate_password" 插件详细配置
+# "validate_password" 插件
+plugin_load_add                         = validate_password.so                                                          # 加载插件
 validate_password                       = OFF                                                                           # 实际不启用此插件
 validate_password_dictionary_file       = {{ data_dir }}/validate_password.dict
 validate_password_policy                = STRONG
