@@ -1,0 +1,54 @@
+upstream php {
+    server unix:/run/php-fpm/wordpress.sock;
+}
+
+server {
+    listen                  80;
+    server_name             wordpress.yingzhuo.com;
+
+    location / {
+        rewrite ^/(.*)      https://wordpress.yingzhuo.com/$1 permanent;
+    }
+}
+
+server {
+    listen                  443 ssl;
+    server_name             wordpress.yingzhuo.com;
+
+    root                    /data/nginx/yingzhuo.com/wordpress;
+    index                   index.php;
+
+    # 日志
+    error_log               /var/log/nginx/wordpress_error.log   error;
+    access_log              /var/log/nginx/wordpress_access.log  combined;
+
+    # https协议
+    ssl_certificate         /etc/nginx/ssl/yingzhuo.com.crt;
+    ssl_certificate_key     /etc/nginx/ssl/yingzhuo.com.key;
+
+    location / {
+        # This is cool because no php is touched for static content.
+        # include the "?$args" part so non-default permalinks doesn't break when using query string
+        try_files $uri $uri/ /index.php?$args;
+    }
+
+    location = /favicon.ico {
+        log_not_found       off;
+        access_log          off;
+    }
+
+    location ~ \.php$ {
+        #NOTE: You should have "cgi.fix_pathinfo = 0;" in php.ini
+        include fastcgi_params;
+        fastcgi_intercept_errors on;
+        fastcgi_pass php;
+        #The following parameter can be also included in fastcgi_params file
+        fastcgi_param  SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    }
+
+    location ~* \.(js|css|png|jpg|jpeg|gif|ico)$ {
+            expires max;
+            log_not_found off;
+    }
+
+}

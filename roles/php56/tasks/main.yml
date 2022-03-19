@@ -1,0 +1,9 @@
+- name: copy repo file for php56
+  copy:
+    src: php56.repo
+    dest: /etc/yum.repos.d/php56.php
+
+- name: upgrade php to 5.6.x
+  shell:
+    cmd: "yum update php -y"
+  changed_when: no

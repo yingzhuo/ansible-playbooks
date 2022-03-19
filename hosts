@@ -17,3 +17,6 @@
 
 [zabbix_agent]
 10.211.55.4
+
+[wordpress]
+10.211.55.4

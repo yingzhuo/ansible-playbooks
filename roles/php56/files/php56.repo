@@ -1,0 +1,16 @@
+[remi]
+name=Remi’s RPM repository for Enterprise Linux 7 – $basearch
+#baseurl=http://rpms.remirepo.net/enterprise/7/remi/$basearch/
+mirrorlist=http://rpms.remirepo.net/enterprise/7/remi/mirror
+enabled=1
+gpgcheck=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-remi
+
+[remi-php56]
+name=Remi’s PHP 5.6 RPM repository for Enterprise Linux 7 – $basearch
+#baseurl=http://rpms.remirepo.net/enterprise/7/php56/$basearch/
+mirrorlist=http://rpms.remirepo.net/enterprise/7/php56/mirror
+# WARNING: If you enable this repository, you must also enable “remi”
+enabled=1
+gpgcheck=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-remi

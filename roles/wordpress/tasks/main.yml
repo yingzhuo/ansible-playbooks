@@ -1,0 +1,34 @@
+- name: copy config for wordpress php-fpm
+  template:
+    src: php/wordpress.conf.j2
+    dest: /etc/php-fpm.d/wordpress.conf
+    owner: root
+    group: root
+    mode: '0644'
+    backup: no
+  notify: restart php
+
+- name: copy config for wordpress db config
+  template:
+    src: wordpress/wp-config.php.j2
+    dest: /var/lib/wordpress/wp-config.php
+    owner: root
+    group: root
+    mode: '0644'
+    backup: no
+  notify: restart php
+
+- name: start php
+  service:
+    name: php-fpm
+    state: started
+
+- name: copy config file for nginx
+  template:
+    src: nginx/wordpress.yingzhuo.com.conf.j2
+    dest: /etc/nginx/conf.d/wordpress.yingzhuo.com.conf
+    owner: root
+    group: root
+    mode: '0644'
+    backup: no
+  notify: restart nginx
