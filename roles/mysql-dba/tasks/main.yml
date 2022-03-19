@@ -1,8 +1,3 @@
-#- name: install percona toolkit
-#  yum:
-#    name: https://downloads.percona.com/downloads/percona-toolkit/3.3.1/binary/redhat/7/x86_64/percona-toolkit-3.3.1-1.el7.x86_64.rpm
-#    state: present
-
 - name: install perl-DBI and more
   yum:
     name:
