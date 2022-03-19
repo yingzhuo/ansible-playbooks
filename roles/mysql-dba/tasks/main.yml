@@ -3,30 +3,26 @@
 #    name: https://downloads.percona.com/downloads/percona-toolkit/3.3.1/binary/redhat/7/x86_64/percona-toolkit-3.3.1-1.el7.x86_64.rpm
 #    state: present
 
-- name: install make
+- name: install perl-DBI and more
   yum:
-    name: make
+    name:
+      - perl-DBI
+      - perl-DBD-MySQL
     state: present
 
-- name: create dir
+- name: create percona-toolkit config dir
   file:
-    path: /root/sbin
+    path: /etc/percona-toolkit
+    state: directory
     owner: root
     group: root
     mode: '0755'
 
-- name: copy dba tools (makefile)
-  copy:
-    src: Makefile
-    dest: /root/sbin/myql-management.makefile
+- name: copy config for all
+  template:
+    src: percona-toolkit.conf.j2
+    dest: /etc/percona-toolkit/percona-toolkit.conf
     owner: root
     group: root
-    mode: '0644'
-
-- name: copy dba tools (awk)
-  copy:
-    src: mysql-extract-slow-log.awk
-    dest: /root/sbin/mysql-extract-slow-log.awk
-    owner: root
-    group: root
-    mode: '0644'
+    mode: '0755'
+    backup: no
