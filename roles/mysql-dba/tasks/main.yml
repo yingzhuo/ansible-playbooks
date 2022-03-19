@@ -19,5 +19,5 @@
     dest: /etc/percona-toolkit/percona-toolkit.conf
     owner: root
     group: root
-    mode: '0755'
+    mode: '0644'
     backup: no
