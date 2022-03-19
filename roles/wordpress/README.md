@@ -3,8 +3,10 @@
 * 要先准备好MySQL数据库
 
 ```sql
-CREATE DATABASE wordpress CHARACTER SET utf8mb4 collate utf8mb4_bin;
-CREATE USER wordpress@'%' IDENTIFIED BY 'wordpress';
+DROP DATABASE IF EXISTS wordpress;
+CREATE DATABASE wordpress CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
+DROP USER IF EXISTS wordpress@'%';
+CREATE USER wordpress@'%' IDENTIFIED WITH mysql_native_password BY 'wordpress';
 GRANT ALL ON wordpress.* TO wordpress@'%';
 ```
 

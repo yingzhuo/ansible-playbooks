@@ -36,7 +36,7 @@ create database zabbix character set utf8 collate utf8_bin;
 
 -- 创建用户
 drop user if exists 'zabbix'@'%';
-create user 'zabbix'@'%' identified by 'zabbix';
+create user 'zabbix'@'%' identified with mysql_native_password by 'zabbix';
 grant all on zabbix.* to 'zabbix'@'%';
 ```
 

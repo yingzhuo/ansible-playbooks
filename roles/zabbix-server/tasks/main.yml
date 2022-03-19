@@ -46,8 +46,8 @@
 
 - name: copy php config file
   template:
-    src: php/php.ini.j2
-    dest: /etc/php.ini
+    src: php/zabbix.conf.j2
+    dest: /etc/php-fpm.d/zabbix.conf
     owner: root
     group: root
     backup: yes
