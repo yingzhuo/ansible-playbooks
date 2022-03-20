@@ -12,7 +12,7 @@ SELECT
 FROM
 	information_schema.COLUMNS
 WHERE
-	TABLE_SCHEMA NOT IN ('mysql', 'information_schema', 'performance_schema', 'sys')
+	TABLE_SCHEMA NOT IN ('mysql', 'information_schema', 'performance_schema', 'sys', 'zabbix')
 AND
 (
 	CHARACTER_SET_NAME <> 'utf8mb4'
@@ -22,11 +22,22 @@ OR
 "
 
 mysql -e "$sql" | awk '
+BEGIN {
+  count = 0
+}
+
 {
   if (NR == 1) {
     next
   }
 
   printf("[warning] [non utf8mb4 column] database: %s | table: %s | column: %s | character-set: %s | collation: %s\n", $1, $2, $3, $4, $5)
+  count ++
+}
+
+END {
+  if (count != 0) {
+    printf("[warning] [non utf8mb4 column] total: %d \n", count)
+  }
 }
 '

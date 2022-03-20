@@ -10,7 +10,7 @@ SELECT
 FROM
 	information_schema.SCHEMATA
 WHERE
-	SCHEMA_NAME NOT IN ('mysql', 'information_schema', 'performance_schema', 'sys')
+	SCHEMA_NAME NOT IN ('mysql', 'information_schema', 'performance_schema', 'sys', 'zabbix')
 AND
 (
 	DEFAULT_CHARACTER_SET_NAME <> 'utf8mb4'
@@ -20,11 +20,20 @@ OR
 "
 
 mysql -e "$sql" | awk '
+BEGIN {
+  count = 0
+}
+
 {
   if (NR == 1) {
     next
   }
 
   printf("[warning] [non utf8mb4 database] database: %s | character-set: %s | collation: %s\n", $1, $2, $3)
+  count ++
+}
+
+END {
+  printf("[warning] [non utf8mb4 database] total: %d\n", count)
 }
 '

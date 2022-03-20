@@ -11,17 +11,28 @@ sql="
   FROM
   	information_schema.TABLES
   WHERE
-  	TABLE_SCHEMA NOT IN ('mysql', 'information_schema', 'performance_schema', 'sys')
+  	TABLE_SCHEMA NOT IN ('mysql', 'information_schema', 'performance_schema', 'sys', 'zabbix')
   AND
   	ENGINE <> 'InnoDB';
 "
 
 mysql -e "$sql" | awk '
+BEGIN {
+  count = 0
+}
+
 {
   if (NR == 1) {
     next
   }
 
   printf("[warning] [non innodb table] database: %s | table: %s | size: %s kB \n", $1, $2, $4)
+  count ++
+}
+
+END {
+  if (count != 0) {
+    printf("[warning] [non innodb table] total: %d \n", count)
+  }
 }
 '
