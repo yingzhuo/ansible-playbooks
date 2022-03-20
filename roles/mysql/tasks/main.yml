@@ -120,7 +120,7 @@
     mode: '0755'
     backup: no
   with_items:
-    - mysql-check-non-innodb.sh
+    - mysql-check-non-innodb-tables.sh
 
 - name: copy mysql-flush-slow.sh
   template:
@@ -137,5 +137,5 @@
     user: root
     minute: "15"
     hour: "0"
-    job: "/usr/sbin/mysql-flush-logs.sh"
+    job: "{{ install_dir }}/tool-sbin/mysql-flush-logs.sh"
     backup: no

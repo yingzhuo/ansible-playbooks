@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-
 # 检查mysql实例中不使用"InnoDB"引擎的非系统表
+# 作者: 应卓
 
 sql="
   SELECT
