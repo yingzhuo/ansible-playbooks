@@ -19,6 +19,14 @@
     shell: /usr/sbin/nologin
     state: present
 
+- name: set owner and group for install dir
+  file:
+    path: "{{ install_dir }}"
+    owner: mysql
+    group: mysql
+    state: directory
+    recurse: yes
+
 - name: create config dir
   file:
     path: "{{ config_dir }}"
@@ -118,8 +126,8 @@
   template:
     src: tool-sbin/mysql-flush-logs.sh.j2
     dest: "{{ install_dir }}/tool-sbin/mysql-flush-logs.sh"
-    owner: root
-    group: root
+    owner: mysql
+    group: mysql
     mode: '0755'
     backup: no
 
