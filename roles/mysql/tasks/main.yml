@@ -112,3 +112,21 @@
     hour: "0"
     job: "/usr/sbin/mysql-flush-logs.sh"
     backup: no
+
+- name: make tool-bin dir
+  file:
+    path: "{{ install_dir }}/tool-sbin"
+    state: directory
+    owner: mysql
+    group: mysql
+    mode: '0755'
+
+- name: copy tools
+  copy:
+    src: "tool-sbin/{{ item }}"
+    dest: "{{ install_dir }}/tool-sbin/{{ item }}"
+    owner: mysql
+    group: mysql
+    mode: '0755'
+  with_items:
+    - mysql-check-non-innodb.sh
