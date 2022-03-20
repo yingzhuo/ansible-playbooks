@@ -95,10 +95,29 @@
     name: mysql
     state: started
 
+- name: make tool-bin dir
+  file:
+    path: "{{ install_dir }}/tool-sbin"
+    state: directory
+    owner: mysql
+    group: mysql
+    mode: '0755'
+
+- name: copy tools shells
+  copy:
+    src: "tool-sbin/{{ item }}"
+    dest: "{{ install_dir }}/tool-sbin/{{ item }}"
+    owner: mysql
+    group: mysql
+    mode: '0755'
+    backup: no
+  with_items:
+    - mysql-check-non-innodb.sh
+
 - name: copy mysql-flush-slow.sh
   template:
-    src: tools/mysql-flush-logs.sh.j2
-    dest: /usr/sbin/mysql-flush-logs.sh
+    src: tool-sbin/mysql-flush-logs.sh.j2
+    dest: "{{ install_dir }}/tool-sbin/mysql-flush-logs.sh"
     owner: root
     group: root
     mode: '0755'
@@ -112,21 +131,3 @@
     hour: "0"
     job: "/usr/sbin/mysql-flush-logs.sh"
     backup: no
-
-- name: make tool-bin dir
-  file:
-    path: "{{ install_dir }}/tool-sbin"
-    state: directory
-    owner: mysql
-    group: mysql
-    mode: '0755'
-
-- name: copy tools
-  copy:
-    src: "tool-sbin/{{ item }}"
-    dest: "{{ install_dir }}/tool-sbin/{{ item }}"
-    owner: mysql
-    group: mysql
-    mode: '0755'
-  with_items:
-    - mysql-check-non-innodb.sh
