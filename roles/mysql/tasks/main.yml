@@ -122,6 +122,7 @@
   with_items:
     - mysql-check-non-innodb-tables.sh
     - mysql-check-non-utf8mb4-databases.sh
+    - mysql-check-non-utf8mb4-columns.sh
 
 - name: copy mysql-flush-slow.sh
   template:

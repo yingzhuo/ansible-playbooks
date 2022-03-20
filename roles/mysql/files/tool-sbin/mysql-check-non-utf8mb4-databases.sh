@@ -25,6 +25,6 @@ mysql -e "$sql" | awk '
     next
   }
 
-  printf("[warning] [non innodb table] database: %s | character-set: %s | collation: %s\n", $1, $2, $3)
+  printf("[warning] [non utf8mb4 database] database: %s | character-set: %s | collation: %s\n", $1, $2, $3)
 }
 '
