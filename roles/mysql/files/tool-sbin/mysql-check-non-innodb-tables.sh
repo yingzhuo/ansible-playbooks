@@ -18,6 +18,10 @@ sql="
 
 mysql -e "$sql" | awk '
 {
+  if (NR == 1) {
+    next
+  }
+
   printf("[warning] [non innodb table] database: %s | table: %s | size: %s kB \n", $1, $2, $4)
 }
 '
