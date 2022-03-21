@@ -34,6 +34,8 @@ BEGIN {
 }
 
 END {
-  printf("[warning] [non utf8mb4 database] total: %d\n", count)
+  if (count != null) {
+    printf("[warning] [non utf8mb4 database] total: %d\n", count)
+  }
 }
 '
