@@ -132,6 +132,7 @@
     - mysql-check-non-utf8mb4-databases.sh
     - mysql-check-non-utf8mb4-columns.sh
     - mysql-check-users.sh
+    - mysql-check-binlog.sh
 
 - name: copy mysql-flush-slow.sh
   template:
