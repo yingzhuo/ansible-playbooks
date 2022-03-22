@@ -13,7 +13,6 @@ WHERE
 
 mysql -e "$sql" | awk '
 BEGIN {
-  OFS = " "
   count = 0
 }
 
@@ -22,8 +21,8 @@ BEGIN {
     next
   }
 
+  printf("plugin: %s | hashed_pwd: %s | %s@%s \n", $3, $4, $1, $2)
   count ++
-  printf("%s@%s | plugin: %s | hashed_pwd: %s\n", $1, $2, $3, $4)
 }
 
 END {
