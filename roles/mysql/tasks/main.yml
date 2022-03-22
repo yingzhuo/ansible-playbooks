@@ -123,6 +123,7 @@
     - mysql-check-non-innodb-tables.sh
     - mysql-check-non-utf8mb4-databases.sh
     - mysql-check-non-utf8mb4-columns.sh
+    - mysql-check-users.sh
 
 - name: copy mysql-flush-slow.sh
   template:
