@@ -22,7 +22,7 @@ password                                = root
 user                                    = mysql                                                                         # 启动用户
 basedir                                 = {{ install_dir }}                                                             # 安装目录
 datadir                                 = {{ data_dir }}                                                                # 数据目录
-tmpdir                                  = /tmp                                                                          # 临时表目录
+tmpdir                                  = {{ data_dir }}/tmp                                                            # 临时表目录
 port                                    = 3306                                                                          # 监听端口
 bind_address                            = *                                                                             # 多网卡时绑定哪一个网卡
 
@@ -72,9 +72,10 @@ skip_blackhole                          = ON                                    
 skip_archive                            = ON                                                                            # 禁用此引擎
 
 # -----------------
-# session memory
+# 缓存相关
 # -----------------
-sort_buffer_size                        = 128M                                                                          # 排序语句可使用缓存 (每个会话都要单独申请此内存)
+sort_buffer_size                        = 128M                                                                          # 排序语句可使用缓存
+tmp_table_size                          = 128M                                                                          # 分组语句等产生的临时表
 
 # -----------------
 # 函数相关
