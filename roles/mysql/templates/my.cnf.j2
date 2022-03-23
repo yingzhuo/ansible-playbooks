@@ -17,7 +17,7 @@ password                                = root
 [mysqld]
 
 # -----------------
-# 基本信息
+# 基本配置
 # -----------------
 user                                    = mysql                                                                         # 启动用户
 basedir                                 = {{ install_dir }}                                                             # 安装目录
@@ -84,6 +84,13 @@ skip_archive                            = ON                                    
 # -----------------
 sort_buffer_size                        = 128M                                                                          # 排序语句可使用缓存
 tmp_table_size                          = 128M                                                                          # 分组语句等产生的临时表
+
+# -----------------
+# InnoDB引擎相关
+# -----------------
+innodb_buffer_pool_size                 = 1G
+innodb_log_file_size                    = 128M
+innodb_online_alter_log_max_size        = 1G                                                                            # 执行在线DDL过程中如果遇到对表的操作记录到此内存日志中
 
 # -----------------
 # 函数相关
