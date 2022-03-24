@@ -49,7 +49,7 @@ sql_mode                                = ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES
 # -----------------
 # 日志相关
 # -----------------
-log_timestamps                          = SYSTEM                                                                        # 日志时区不使用UTC，而跟随系统
+log_timestamps                          = SYSTEM                                                                        # 日志时区不使用UTC 而跟随系统
 log_output                              = FILE                                                                          # 通用日志和慢查询日志记录格式 (FILE | TABLE)
 
 log_error                               = error.log                                                                     # 错误日志位置
@@ -91,9 +91,10 @@ tmp_table_size                          = 128M                                  
 # -----------------
 # InnoDB引擎相关
 # -----------------
-innodb_page_size                        = 16K                                                                           # 一页大小
 innodb_buffer_pool_size                 = 1G
 innodb_log_file_size                    = 128M
+innodb_page_size                        = 16K                                                                           # 一页大小
+innodb_fill_factor                      = 100                                                                           # 页填充因子 10-100 100: 预留1/16的空间 10: 预留90%的空间
 innodb_online_alter_log_max_size        = 1G                                                                            # 执行在线DDL过程中如果遇到对表的操作记录到此内存日志中
 
 # -----------------
