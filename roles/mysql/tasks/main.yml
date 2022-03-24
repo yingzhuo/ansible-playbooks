@@ -133,6 +133,8 @@
     - mysql-table-no-primary-key.sh
     - mysql-column-non-utf8mb4.sh
     - mysql-index-unused.sh
+    - mysql-index-low-cardinality.sh
+    - mysql-index-compound.sh
     - mysql-show-users.sh
     - mysql-current-binlog.sh
 
