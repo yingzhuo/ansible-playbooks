@@ -128,11 +128,13 @@
     mode: '0755'
     backup: no
   with_items:
-    - mysql-check-non-innodb-tables.sh
-    - mysql-check-non-utf8mb4-databases.sh
-    - mysql-check-non-utf8mb4-columns.sh
-    - mysql-check-users.sh
-    - mysql-check-binlog.sh
+    - mysql-database-non-utf8mb4.sh
+    - mysql-table-non-innodb.sh
+    - mysql-table-no-primary-key.sh
+    - mysql-column-non-utf8mb4.sh
+    - mysql-index-unused.sh
+    - mysql-show-users.sh
+    - mysql-current-binlog.sh
 
 - name: copy mysql-flush-slow.sh
   template:

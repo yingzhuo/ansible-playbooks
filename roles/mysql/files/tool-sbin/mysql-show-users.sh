@@ -16,16 +16,14 @@ BEGIN {
   count = 0
 }
 
-{
-  if (NR == 1) {
-    next
-  }
-
+NR != 1 {
   printf("plugin: %s | hashed_pwd: %s | %s@%s \n", $3, $4, $1, $2)
   count ++
 }
 
 END {
-  printf("total: %d\n", count)
+  if (count != 0) {
+    printf("total: %d\n", count)
+  }
 }
 '

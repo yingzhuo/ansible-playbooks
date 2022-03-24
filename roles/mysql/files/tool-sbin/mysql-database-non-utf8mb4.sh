@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# 检查mysql实例中不使用"utf8mb4"字符集的database
+# 检查不使用"utf8mb4"字符集的database
 # 作者: 应卓
 
 sql="
@@ -24,17 +24,13 @@ BEGIN {
   count = 0
 }
 
-{
-  if (NR == 1) {
-    next
-  }
-
+NR != 1 {
   printf("[warning] [non utf8mb4 database] database: %s | character-set: %s | collation: %s\n", $1, $2, $3)
   count ++
 }
 
 END {
-  if (count != null) {
+  if (count != 0) {
     printf("[warning] [non utf8mb4 database] total: %d\n", count)
   }
 }

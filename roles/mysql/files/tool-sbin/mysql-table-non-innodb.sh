@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# 检查mysql实例中不使用"InnoDB"引擎的非系统表
+# 检查不使用"InnoDB"引擎的表
 # 作者: 应卓
 
 sql="
@@ -21,11 +21,7 @@ BEGIN {
   count = 0
 }
 
-{
-  if (NR == 1) {
-    next
-  }
-
+NR != 1 {
   printf("[warning] [non innodb table] database: %s | table: %s | size: %s kB \n", $1, $2, $4)
   count ++
 }
