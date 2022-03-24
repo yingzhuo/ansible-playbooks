@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-ts=$(/bin/date +%s)
+ts=$(/bin/date '+%Y.%m.%d.%s')
 
 # 处理通用日志
 if [ -f {{ data_dir }}/general.log ]; then
