@@ -20,8 +20,8 @@ grant all on *.* to percona@'%';
 | 添加索引             | no       | pt-online-schema-change --alter 'ADD INDEX indx_b (b)' D=test,t=x --dry-run | -                                                            |
 | 变更数据库默认字符集 | -        | <不支持也不需要>                                             | ALTER DATABASE test CHARACTER SET utf8mb4 COLLATE utf8mb4_bin |
 | 变更表字符集         | yes      | pt-online-schema-change --alter 'CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_bin' D=test,t=x --dry-run | -                                                            |
-|                      |          |                                                              |                                                              |
-|                      |          |                                                              |                                                              |
+
+**注意:** 处理外键时请合理使用`--alter-foreign-keys-method=rebuild_constraints`选项。
 
 
 
