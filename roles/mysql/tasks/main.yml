@@ -135,6 +135,7 @@
     - mysql-index-unused.sh
     - mysql-index-low-cardinality.sh
     - mysql-index-compound.sh
+    - mysql-index-redundant.sh
     - mysql-show-users.sh
     - mysql-current-binlog.sh
 
