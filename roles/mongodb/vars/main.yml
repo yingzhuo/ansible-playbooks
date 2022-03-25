@@ -1,0 +1,2 @@
+install_dir: /var/lib/mongodb
+data_dir: /data/mongodb

@@ -1,0 +1,70 @@
+- name: install libcurl and more
+  yum:
+    name:
+      - libcurl
+      - openssl
+      - xz-libs
+    state: present
+
+- name: create group for mongod
+  group:
+    name: mongod
+    state: present
+
+- name: crete user for mongod
+  user:
+    name: mongod
+    group: mongod
+    create_home: no
+    shell: /usr/sbin/nologin
+    state: present
+
+- name: create config file dir
+  file:
+    path: /etc/mongodb
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+
+- name: copy config file
+  template:
+    src: mongod.yml
+    dest: /etc/mongodb/mongod.yml
+    owner: root
+    group: root
+    mode: '0644'
+  notify:
+    - restart mongodb
+
+- name: create data dir
+  file:
+    path: "{{ data_dir }}"
+    state: directory
+    owner: mongod
+    group: mongod
+    mode: '0755'
+
+- name: create log dir
+  file:
+    path: /var/log/mongodb
+    state: directory
+    owner: mongod
+    group: mongod
+    mode: '0755'
+
+- name: copy systemv mongod.service file
+  template:
+    src: mongod.service
+    dest: /lib/systemd/system/mongod.service
+    owner: mongod
+    group: mongod
+    mode: '0644'
+  notify:
+    - systemctl daemon reload
+    - restart mongodb
+
+- name: start mongodb
+  service:
+    name: mongod
+    state: started

@@ -1,0 +1,14 @@
+[Unit]
+Description=MongoDB
+Documentation=https://www.mongodb.com/docs/manual/
+After=syslog.target
+
+[Service]
+User=mongod
+Group=mongod
+ExecStart={{ install_dir }}/bin/mongod --config /etc/mongodb/mongod.yml
+KillSignal=15
+SuccessExitStatus=143
+
+[Install]
+WantedBy=multi-user.target
