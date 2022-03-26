@@ -81,6 +81,7 @@ skip_archive                            = ON                                    
 # -----------------
 sort_buffer_size                        = 128M                                                                          # 排序语句可使用缓存
 tmp_table_size                          = 128M                                                                          # 分组语句等产生的临时表
+join_buffer_size                        = 1G                                                                            # 多表关联时外表被关联的列使用缓存，不能使用索引时才使用此动作
 
 # -----------------
 # InnoDB引擎相关
