@@ -37,3 +37,8 @@ storage:
 
   # 数据存储目录
   dbPath: /data/mongodb
+
+security:
+
+  # 认证
+  authorization: enabled
