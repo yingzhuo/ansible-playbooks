@@ -9,3 +9,4 @@
     - selinux
     - user
     - ssh
+    - swap
