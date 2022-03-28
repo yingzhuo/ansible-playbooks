@@ -6,6 +6,12 @@
       - libaio
     state: present
 
+# 本工具用于基准测试
+- name: install sysstat
+  yum:
+    name: sysstat
+    state: present
+
 - name: create group for mysqld
   group:
     name: mysql

@@ -92,6 +92,8 @@ innodb_online_alter_log_max_size        = 1G                                    
 innodb_fill_factor                      = 100                                                                           # 页填充因子 10-100 100: 预留1/16的空间 10: 预留90%的空间
 innodb_log_file_size                    = 2G                                                                            # 重做日志大小
 innodb_flush_neighbors                  = 0                                                                             # SSD硬盘相关参数，使硬盘刷新效率更高
+innodb_io_capacity                      = 4000
+innodb_flush_method                     = O_DIRECT
 
 # -----------------
 # 函数相关

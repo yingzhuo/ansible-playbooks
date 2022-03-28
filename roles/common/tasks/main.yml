@@ -4,6 +4,7 @@
       # 通用
       - tree
       - psmisc
+      - sysstat
       - yum-utils
       - httpd-tools
       - dos2unix
@@ -29,9 +30,6 @@
       - pcre-devel
       - openssl-devel
       - zlib-devel
-
-      # 系统工具
-      - sysstat
 
       # 其他
       - mailx
