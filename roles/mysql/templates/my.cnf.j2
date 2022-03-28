@@ -87,10 +87,11 @@ join_buffer_size                        = 1G                                    
 # InnoDB引擎相关
 # -----------------
 innodb_buffer_pool_size                 = 1G
-innodb_log_file_size                    = 128M
+innodb_log_file_size                    = 2G
 innodb_page_size                        = 16K                                                                           # 一页大小
-innodb_fill_factor                      = 100                                                                           # 页填充因子 10-100 100: 预留1/16的空间 10: 预留90%的空间
 innodb_online_alter_log_max_size        = 1G                                                                            # 执行在线DDL过程中如果遇到对表的操作记录到此内存日志中
+innodb_fill_factor                      = 100                                                                           # 页填充因子 10-100 100: 预留1/16的空间 10: 预留90%的空间
+innodb_flush_neighbors                  = 0                                                                             # SSD硬盘相关参数，使硬盘刷新效率更高
 
 # -----------------
 # 函数相关
