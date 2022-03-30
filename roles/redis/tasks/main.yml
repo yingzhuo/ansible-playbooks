@@ -82,6 +82,13 @@
   notify:
     - restart redis
 
+- name: copy log rotate config file
+  template:
+    src: redis.logrotate.j2
+    dest: /etc/logrotate.d/redis
+    owner: root
+    group: root
+
 - name: copy systemv redis.service file
   template:
     src: redis.service.j2

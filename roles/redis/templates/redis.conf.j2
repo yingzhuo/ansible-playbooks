@@ -8,6 +8,7 @@ daemonize       no
 pidfile         {{ data_dir }}/redis.pid
 loglevel        notice
 logfile         {{ log_dir }}/redis.log
+syslog-enabled  no
 databases       16
 dir             {{ data_dir }}
 
