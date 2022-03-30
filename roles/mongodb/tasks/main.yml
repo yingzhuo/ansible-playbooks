@@ -55,10 +55,10 @@
 
 - name: copy systemv mongod.service file
   template:
-    src: mongod.service
+    src: mongod.service.j2
     dest: /lib/systemd/system/mongod.service
-    owner: mongod
-    group: mongod
+    owner: root
+    group: root
     mode: '0644'
   notify:
     - systemctl daemon reload

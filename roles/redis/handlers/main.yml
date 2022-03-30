@@ -1,0 +1,8 @@
+- name: systemctl daemon reload
+  shell:
+    cmd: "systemctl daemon-reload"
+
+- name: restart redis
+  service:
+    name: redis
+    state: restarted
