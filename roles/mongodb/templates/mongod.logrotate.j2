@@ -1,5 +1,5 @@
 {{ log_dir }}/*.log {
-    create 0644 redis redis
+    create 0600 mongod mongod
     daily
     rotate 10
     missingok
@@ -9,6 +9,6 @@
     dateext
     sharedscripts
     postrotate
-        /usr/bin/true
+        killall -SIGUSR1 mongod > /dev/null 2>&1 || true
     endscript
 }

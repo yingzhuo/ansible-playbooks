@@ -3,17 +3,20 @@ systemLog:
   # 日志级别
   verbosity: 0
 
-  # 安静模式 (无日期产生)
+  # 安静模式 (无日志产生)
   quiet: false
 
   # 日志类型
   destination: file
 
   # 日志目录
-  path: /var/log/mongodb/mongod.log
+  path: {{ log_dir }}/mongod.log
 
   # 日志追加
   logAppend: true
+
+  # 使用logrotate工具管理日志滚动
+  logRotate: reopen
 
   # 日志时间戳格式
   timeStampFormat: iso8601-local
@@ -36,7 +39,7 @@ net:
 storage:
 
   # 数据存储目录
-  dbPath: /data/mongodb
+  dbPath: {{ data_dir }}
 
 security:
 

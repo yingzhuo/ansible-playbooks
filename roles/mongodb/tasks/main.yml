@@ -47,11 +47,18 @@
 
 - name: create log dir
   file:
-    path: /var/log/mongodb
+    path: "{{ log_dir }}"
     state: directory
     owner: mongod
     group: mongod
     mode: '0755'
+
+- name: copy log rotate config file
+  template:
+    src: mongod.logrotate.j2
+    dest: /etc/logrotate.d/mongod
+    owner: root
+    group: root
 
 - name: copy systemv mongod.service file
   template:
