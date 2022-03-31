@@ -10,7 +10,6 @@
     group: yingzhuo
     groups:
       - wheel
-      - docker
     create_home: yes
     home: /home/yingzhuo
     shell: /usr/bin/zsh
