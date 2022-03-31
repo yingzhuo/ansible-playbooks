@@ -40,9 +40,8 @@
     group: redis
 
 - name: test if redis is installed
-  find:
-    paths:
-      - "{{ install_dir }}/redis-server"
+  stat:
+    path: "{{ install_dir }}/redis-server"
   register: files_found
 
 - name: download source code of redis
@@ -50,12 +49,12 @@
     src: "https://download.redis.io/redis-stable.tar.gz"
     dest: /tmp
     remote_src: yes
-  when: files_found == 0
+  when: files_found.stat.exists == false
 
 - name: compile source code of redis
   shell:
     cmd: "cd /tmp/redis-stable && make"
-  when: files_found == 0
+  when: files_found.stat.exists == false
 
 - name: copy binary file to install dir
   shell:
@@ -67,13 +66,13 @@
     - redis-cli
     - redis-sentinel
     - redis-server
-  when: files_found == 0
+  when: files_found.stat.exists == false
 
 - name: remove source dir
   file:
     path: "/tmp/redis-stable"
     state: absent
-  when: files_found == 0
+  when: files_found.stat.exists == false
 
 - name: copy redis config file
   template:
