@@ -19,7 +19,6 @@ skip_auto_rehash                        = ON
 user                                    = mysql                                                                         # 启动用户
 basedir                                 = {{ install_dir }}                                                             # 安装目录
 datadir                                 = {{ data_dir }}                                                                # 数据目录
-tmpdir                                  = {{ data_dir }}/tmp                                                            # 临时表目录
 port                                    = 3306                                                                          # 监听端口
 bind_address                            = *                                                                             # 多网卡时绑定哪一个网卡
 
@@ -109,12 +108,12 @@ skip_mysqlx                             = ON                                    
 skip_mysqlx_cache_cleaner               = ON                                                                            # 禁用此插件
 
 # "validate_password" 插件
-plugin_load_add                         = validate_password.so                                                          # 加载插件
-validate_password                       = OFF                                                                           # 实际不启用此插件
-validate_password_dictionary_file       = {{ data_dir }}/validate_password.dict
-validate_password_policy                = STRONG
-validate_password_length                = 8
-validate_password_mixed_case_count      = 1
-validate_password_number_count          = 1
-validate_password_special_char_count    = 1
-validate_password_check_user_name       = ON
+#plugin_load_add                         = validate_password.so                                                          # 加载插件
+#validate_password                       = OFF                                                                           # 实际不启用此插件
+#validate_password_dictionary_file       = {{ data_dir }}/validate_password.dict
+#validate_password_policy                = STRONG
+#validate_password_length                = 8
+#validate_password_mixed_case_count      = 1
+#validate_password_number_count          = 1
+#validate_password_special_char_count    = 1
+#validate_password_check_user_name       = ON

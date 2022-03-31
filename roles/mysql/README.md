@@ -6,7 +6,9 @@
 
 ```sql
 -- 在非生产环境下，建议使用以下脚本 
-alter user 'root'@'localhost' identified by 'root';
+use mysql;
+
+alter user 'root'@'localhost' identified with mysql_native_password by 'root';
 
 update mysql.user
 set host = '%'

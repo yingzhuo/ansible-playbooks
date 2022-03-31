@@ -59,14 +59,6 @@
     group: mysql
     mode: '0755'
 
-- name: create tmp dir in data dir
-  file:
-    path: "{{ data_dir }}/tmp"
-    state: directory
-    owner: mysql
-    group: mysql
-    mode: '0755'
-
 - name: test if data dir empty
   find:
     paths:
