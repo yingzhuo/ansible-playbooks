@@ -1,8 +1,19 @@
 - name: install perl-DBI and more
   yum:
     name:
+      - perl-Time-HiRes
       - perl-DBI
       - perl-DBD-MySQL
+      - perl-IO-Socket-IP
+      - perl-IO-Socket-SSL
+      - perl-Net-LibIDN
+      - perl-Net-SSLeay
+      - perl-ExtUtils-CBuilder
+      - perl-ExtUtils-MakeMaker
+      - perl-CPAN
+      - perl-Digest-MD5
+      - gdb
+      - strace
     state: present
 
 - name: create percona-toolkit config dir

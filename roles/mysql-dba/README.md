@@ -23,8 +23,6 @@ grant all on *.* to percona@'%';
 
 **注意:** 处理外键时请合理使用`--alter-foreign-keys-method=rebuild_constraints`选项。
 
-
-
 #### 附录(2) 本人编写的awk脚本，用于分析慢查询文本日志
 
 ```awk

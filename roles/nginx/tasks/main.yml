@@ -77,6 +77,14 @@
   notify:
     - restart nginx
 
+- name: mkdir for downloading site
+  file:
+    path: /data/nginx/yingzhuo.com/download
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+
 - name: startup nginx
   service:
     name: nginx
