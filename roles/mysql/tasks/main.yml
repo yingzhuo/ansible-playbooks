@@ -154,11 +154,9 @@
     mode: '0755'
     backup: no
 
-- name: set crontab for flush log tools
-  cron:
-    name: "flush mysql logs"
-    user: root
-    minute: "15"
-    hour: "0"
-    job: "{{ install_dir }}/tool-sbin/mysql-flush-logs.sh"
-    backup: no
+- name: copy logrotate config file
+  template:
+    src: mysqld.logrotate.j2
+    dest: /etc/logrotate.d/mysqld
+    owner: root
+    group: root
