@@ -6,7 +6,7 @@ After=syslog.target
 [Service]
 User=redis
 Group=redis
-ExecStart={{ install_dir }}/redis-server {{ config_dir }}/redis.conf
+ExecStart={{ install_dir }}/bin/redis-server {{ config_dir }}/redis.conf
 KillSignal=15
 SuccessExitStatus=143
 

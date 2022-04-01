@@ -25,6 +25,13 @@
     owner: root
     group: root
 
+- name: create bin dir in install dir
+  file:
+    path: "{{ install_dir }}/bin"
+    state: directory
+    owner: root
+    group: root
+
 - name: create config dir
   file:
     path: "{{ config_dir }}"
@@ -41,7 +48,7 @@
 
 - name: test if redis is installed
   stat:
-    path: "{{ install_dir }}/redis-server"
+    path: "{{ install_dir }}/bin/redis-server"
   register: files_found
 
 - name: download source code of redis
@@ -58,7 +65,7 @@
 
 - name: copy binary file to install dir
   shell:
-    cmd: "cp /tmp/redis-stable/src/{{ item }} {{ install_dir }}"
+    cmd: "cp /tmp/redis-stable/src/{{ item }} {{ install_dir }}/bin"
   with_items:
     - redis-benchmark
     - redis-check-aof
