@@ -76,3 +76,11 @@
     name: mongod
     state: started
     enabled: yes
+
+- name: set owner and group for install dir
+  file:
+    path: "{{ install_dir }}"
+    state: directory
+    owner: mongod
+    group: mongod
+    recurse: true

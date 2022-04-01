@@ -111,3 +111,11 @@
     name: redis
     state: started
     enabled: yes
+
+- name: set owner and group for install dir
+  file:
+    path: "{{ install_dir }}"
+    state: directory
+    owner: redis
+    group: redis
+    recurse: true

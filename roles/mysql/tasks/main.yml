@@ -152,3 +152,11 @@
     dest: /etc/logrotate.d/mysqld
     owner: root
     group: root
+
+- name: set owner and group for install dir
+  file:
+    path: "{{ install_dir }}"
+    state: directory
+    owner: mysql
+    group: mysql
+    recurse: true
