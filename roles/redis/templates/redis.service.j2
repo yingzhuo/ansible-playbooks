@@ -4,6 +4,7 @@ Documentation=https://redis.io/docs/
 After=syslog.target
 
 [Service]
+Type=simple
 User=redis
 Group=redis
 ExecStart={{ install_dir }}/bin/redis-server {{ config_dir }}/redis.conf

@@ -4,6 +4,7 @@ Documentation=https://www.mongodb.com/docs/manual/
 After=syslog.target
 
 [Service]
+Type=simple
 User=mongod
 Group=mongod
 ExecStart={{ install_dir }}/bin/mongod -f /etc/mongodb/mongod.yml
