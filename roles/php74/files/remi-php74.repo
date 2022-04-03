@@ -1,0 +1,31 @@
+[remi-php74]
+name=Remi's PHP 7.4 RPM repository for Enterprise Linux 7 - $basearch
+#baseurl=http://rpms.remirepo.net/enterprise/7/php74/$basearch/
+#mirrorlist=https://rpms.remirepo.net/enterprise/7/php74/httpsmirror
+mirrorlist=http://cdn.remirepo.net/enterprise/7/php74/mirror
+enabled=1
+gpgcheck=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-remi
+
+[remi-php74-debuginfo]
+name=Remi's PHP 7.4 RPM repository for Enterprise Linux 7 - $basearch - debuginfo
+baseurl=http://rpms.remirepo.net/enterprise/7/debug-php74/$basearch/
+enabled=1
+gpgcheck=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-remi
+
+[remi-php74-test]
+name=Remi's PHP 7.4 test RPM repository for Enterprise Linux 7 - $basearch
+#baseurl=http://rpms.remirepo.net/enterprise/7/test74/$basearch/
+#mirrorlist=https://rpms.remirepo.net/enterprise/7/test74/httpsmirror
+mirrorlist=http://cdn.remirepo.net/enterprise/7/test74/mirror
+enabled=1
+gpgcheck=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-remi
+
+[remi-php74-test-debuginfo]
+name=Remi's PHP 7.4 test RPM repository for Enterprise Linux 7 - $basearch - debuginfo
+baseurl=http://rpms.remirepo.net/enterprise/7/debug-test74/$basearch/
+enabled=1
+gpgcheck=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-remi

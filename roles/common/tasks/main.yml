@@ -6,6 +6,7 @@
       - psmisc
       - sysstat
       - yum-utils
+      - epel-release
       - httpd-tools
       - dos2unix
       - jq

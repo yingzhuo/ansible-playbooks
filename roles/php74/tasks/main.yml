@@ -1,0 +1,21 @@
+- name: copy repo file for php56
+  copy:
+    src: "{{ item }}"
+    dest: "/etc/yum.repos.d/{{ item }}"
+  with_items:
+    - remi-safe.repo
+    - remi-php74.repo
+
+#- name: install php
+#  yum:
+#    name:
+#      - php
+#      - php-pdo
+#      - php-fpm
+#      - php-gd
+#      - php-mbstring
+#      - php-mysql
+#      - php-curl
+#      - php-mcrypt
+#      - php-json
+#    state: present
