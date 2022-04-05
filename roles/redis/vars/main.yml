@@ -1,4 +1,0 @@
-install_dir: /usr/local/redis
-data_dir: /data/redis
-config_dir: /etc/redis
-log_dir: /var/log/redis

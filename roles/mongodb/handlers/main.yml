@@ -1,8 +1,0 @@
-- name: systemctl daemon reload
-  shell:
-    cmd: "systemctl daemon-reload"
-
-- name: restart mongodb
-  service:
-    name: mongod
-    state: restarted

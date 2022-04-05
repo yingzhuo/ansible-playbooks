@@ -1,4 +1,0 @@
-- hosts: mysql
-  gather_facts: no
-  roles:
-    - mysql-dba

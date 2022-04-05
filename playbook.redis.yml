@@ -1,4 +1,0 @@
-- hosts: redis
-  gather_facts: no
-  roles:
-    - redis
